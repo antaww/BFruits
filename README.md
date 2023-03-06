@@ -1,1 +1,1 @@
-# BWorld
+# BWorld - The game
