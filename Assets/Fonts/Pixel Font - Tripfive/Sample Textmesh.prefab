@@ -83,7 +83,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293603593108180}
-  m_Text: Hello World
+  m_Text: 'B-Fruits
+
+'
   m_OffsetZ: 0
   m_CharacterSize: 1.5
   m_LineSpacing: 1
