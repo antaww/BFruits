@@ -57,6 +57,9 @@ public class Spawner : MonoBehaviour
 
             GameObject fruit = Instantiate(prefab, position, rotation); // Spawn fruit
             Destroy(fruit, maxLifetime); // Destroy fruit after maxLifetime
+            
+            float randomSize = Random.Range(200f, 250f); // Random size
+            fruit.transform.localScale = new Vector3(randomSize, randomSize, randomSize); // Apply size to fruit
 
             float force = Random.Range(minForce, maxForce); // Random force
             fruit.GetComponent<Rigidbody>().AddForce(fruit.transform.up * force, ForceMode.Impulse); // Apply force to fruit
