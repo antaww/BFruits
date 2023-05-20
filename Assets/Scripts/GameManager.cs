@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int score;
     public int lives = 3;
     public static bool IsPaused;
-    
+
     public GameObject scoreGUI;
     public GameObject livesGUI;
     public GameObject pauseMenu;
@@ -20,26 +20,30 @@ public class GameManager : MonoBehaviour
         UpdateScoreGUI();
         // UpdateLivesGUI();
     }
-    
+
     private void Update()
     {
         UpdateScoreGUI();
         // UpdateLivesGUI();
 
-        if (!Input.GetKeyDown(KeyCode.Escape)) return;
-        if (IsPaused)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause.ResumeGame();
-        }
-        else
-        {
-            Pause.PauseGame();
+            if (IsPaused)
+            {
+                Pause.ResumeGame();
+            }
+            else
+            {
+                Pause.PauseGame();
+            }
         }
     }
 
     public void AddScore(int points)
     {
         score += points;
+        //todo: scoreGUI zoom in animation
+
         slashSound.GetComponent<AudioSource>().time = 1.2f;
         slashSound.GetComponent<AudioSource>().Play();
     }

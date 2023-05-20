@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    public static GameObject PauseMenu;
+    private static GameObject _pauseMenu;
     
+    private void Awake()
+    {
+        _pauseMenu = GameObject.Find("PauseMenu");
+    }
+
     public static void PauseGame()
     {
-        PauseMenu.SetActive(true);
+        _pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         GameManager.IsPaused = !GameManager.IsPaused;
     }
     
     public static void ResumeGame()
     {
-        PauseMenu.SetActive(false);
+        print("ResumeGame");
+        _pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GameManager.IsPaused = !GameManager.IsPaused;
     }
