@@ -42,8 +42,11 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points)
     {
         score += points;
-        //todo: scoreGUI zoom in animation
-
+        
+        // Score GUI animation
+        LeanTween.scale(scoreGUI, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
+        LeanTween.scale(scoreGUI.transform.parent.gameObject, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
+        
         slashSound.GetComponent<AudioSource>().time = 1.2f;
         slashSound.GetComponent<AudioSource>().Play();
     }
