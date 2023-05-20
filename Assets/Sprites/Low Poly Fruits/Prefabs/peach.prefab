@@ -186,6 +186,14 @@ PrefabInstance:
       value: Particle System
       objectReference: {fileID: 0}
     - target: {fileID: 6464020603012457593, guid: 551a9051a8500614999b8f89a8e8852f, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464020603012457593, guid: 551a9051a8500614999b8f89a8e8852f, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464020603012457593, guid: 551a9051a8500614999b8f89a8e8852f, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.16862746
       objectReference: {fileID: 0}

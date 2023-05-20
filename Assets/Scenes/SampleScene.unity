@@ -857,6 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   lives: 3
+  difficulty: 0
   scoreGUI: {fileID: 1976807734}
   livesGUI: {fileID: 0}
   pauseMenu: {fileID: 310114178}
@@ -1247,6 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf0f1ceea80d464fb0d460e0d508f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1287727190}
   fruitsList:
   - {fileID: 1829371231341652, guid: 426b44a7575f71e479fab4f4e8431989, type: 3}
   - {fileID: 1369001872449898, guid: 2f2e54b9f3898eb46a0b47f9a4d4c52b, type: 3}

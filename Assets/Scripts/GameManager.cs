@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public int score;
     public int lives = 3;
+    public int difficulty;
     public static bool IsPaused;
 
     public GameObject scoreGUI;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        difficulty = PlayerPrefs.GetInt("difficulty");
         pauseMenu.SetActive(false);
         UpdateScoreGUI();
         // UpdateLivesGUI();
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        print(difficulty);
         UpdateScoreGUI();
         // UpdateLivesGUI();
 
@@ -43,7 +46,10 @@ public class GameManager : MonoBehaviour
     {
         // Score GUI animation
         LeanTween.scale(scoreGUI, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
-        LeanTween.scale(scoreGUI.transform.parent.gameObject, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
+        var scoreGUIParent = scoreGUI.transform.parent;
+        LeanTween.scale(scoreGUIParent.gameObject, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
+        LeanTween.scale(scoreGUI, new Vector3(1f, 1f, 1f), 0.3f).setDelay(0.3f);
+        LeanTween.scale(scoreGUIParent.gameObject, new Vector3(1f, 1f, 1f), 0.3f).setDelay(0.3f);
         
         score += points;
         

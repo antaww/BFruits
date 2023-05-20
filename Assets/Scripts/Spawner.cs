@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public GameManager gameManager;
+    
     private Collider _spawnArea;
 
     public GameObject[] fruitsList;
@@ -21,6 +23,12 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         _spawnArea = GetComponent<Collider>(); // Get collider
+        
+        // Edit spawner stats based on difficulty
+        if (gameManager.difficulty <= 1) return;
+        bombChance *= gameManager.difficulty;
+        minSpawnDelay /= gameManager.difficulty;
+        maxSpawnDelay /= gameManager.difficulty;
     }
 
     private void OnEnable()
