@@ -600,7 +600,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 498107f44d7827d40a9a25c5bbc574f7, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.144
   m_Pitch: 1
   Loop: 0
@@ -1667,7 +1667,7 @@ SphereCollider:
   m_GameObject: {fileID: 1974749083}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.62711024
   m_Center: {x: 0, y: 0, z: -0.12711024}
@@ -1858,6 +1858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999158647}
   - component: {fileID: 1999158648}
+  - component: {fileID: 1999158649}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -1988,3 +1989,16 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1999158649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999158646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f93d3499caca44dabb6460f54f4787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slashSound: {fileID: 982683410}
