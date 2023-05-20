@@ -8,6 +8,7 @@ public class Fruit : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
+        if (!Input.GetMouseButton(0)) return; // Security check
         Destroy(gameObject);
         var explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(explosion, 1f);
