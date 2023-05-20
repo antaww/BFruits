@@ -4,8 +4,8 @@ public class Bomb : MonoBehaviour
 {
     private const float RotationForce = 200;
     public ParticleSystem explosionParticle;
-
-    void Update()
+    
+    private void Update()
     {
         transform.Rotate(Vector2.right * (Time.deltaTime * RotationForce));
     }

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92451745958bff342ad54a06ca55432a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruitJuice: {fileID: 6723306732716444440, guid: ce093973b85752b45b017775a6be6d34, type: 3}
   explosionVFX: {fileID: 4613922231579634777}
 --- !u!1001 &7518367935278117923
 PrefabInstance:
