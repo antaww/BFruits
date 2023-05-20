@@ -1,1 +1,1 @@
-# BFruits - The fruits slicer hahaEZ#instalockreyna#hardstuckbronzetroisineveryriotgame#shockdart
+# BFruits - The fruits slicer
