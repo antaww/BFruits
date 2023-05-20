@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
+    private const float RotationForce = 200;
+
     public GameObject explosionVFX;
     private void OnTriggerEnter(Collider other)
     {
@@ -19,5 +21,10 @@ public class Fruit : MonoBehaviour
     {
         Destroy(gameObject);
         //todo: subtract score
+    }
+    
+    void Update()
+    {
+        transform.Rotate(Vector2.right * (Time.deltaTime * RotationForce));
     }
 }
