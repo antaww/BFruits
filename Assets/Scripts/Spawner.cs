@@ -18,8 +18,6 @@ public class Spawner : MonoBehaviour
     public float minForce = 18f;
     public float maxForce = 22f;
 
-    public float maxLifetime = 5f;
-
     private void Awake()
     {
         _spawnArea = GetComponent<Collider>(); // Get collider
@@ -56,7 +54,6 @@ public class Spawner : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0f, 0f, Random.Range(minAngle, maxAngle)); // Random rotation
 
             GameObject fruit = Instantiate(prefab, position, rotation); // Spawn fruit
-            Destroy(fruit, maxLifetime); // Destroy fruit after maxLifetime
             
             float randomSize = Random.Range(200f, 250f); // Random size
             fruit.transform.localScale = new Vector3(randomSize, randomSize, randomSize); // Apply size to fruit
