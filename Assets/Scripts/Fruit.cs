@@ -13,6 +13,7 @@ public class Fruit : MonoBehaviour
         var explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(explosion, 1f);
         //todo: add score
+        Score.score++;
     }
     
     private void OnBecameInvisible()
