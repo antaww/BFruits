@@ -3,6 +3,7 @@ using UnityEngine;
 public class Fruit : MonoBehaviour
 {
     private const float RotationForce = 200;
+	public AudioSource slashSound;
 
     public GameObject explosionVFX;
     private void OnTriggerEnter(Collider other)
@@ -13,7 +14,6 @@ public class Fruit : MonoBehaviour
         var explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(explosion, 1f);
         //todo: add score
-        Score.score++;
     }
     
     private void OnBecameInvisible()

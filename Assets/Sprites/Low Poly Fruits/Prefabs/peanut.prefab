@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 7940823620801121687}
   - component: {fileID: 8246774016803217928}
   - component: {fileID: 1617589577587514466}
+  - component: {fileID: 8151257576320204350}
   m_Layer: 0
   m_Name: peanut
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +130,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionVFX: {fileID: 8956374714733836850}
+--- !u!114 &8151257576320204350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329430274803916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f93d3499caca44dabb6460f54f4787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slashSound: {fileID: 0}
 --- !u!1001 &6060162050165088840
 PrefabInstance:
   m_ObjectHideFlags: 0
