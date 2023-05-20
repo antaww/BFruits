@@ -42,10 +42,8 @@ public class Spawner : MonoBehaviour
         {
             GameObject prefab = fruitsList[Random.Range(0, fruitsList.Length)];
             var random = Random.value;
-            print(random + " " + bombChance);
 
             if (random < bombChance) {
-                print("Bomb!");
                 prefab = bombPrefab;
             }
 

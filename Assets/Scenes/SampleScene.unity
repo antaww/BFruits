@@ -489,8 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115c7ce88d10e8143b5f3f8241a1bf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 310114178}
-  isPaused: 0
 --- !u!4 &792120620
 Transform:
   m_ObjectHideFlags: 0
@@ -848,8 +846,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115c7ce88d10e8143b5f3f8241a1bf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1287727189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1287727191}
+  - component: {fileID: 1287727190}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1287727190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287727189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4444f68ef19b45948bac7f305e3e92b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  lives: 3
+  scoreGUI: {fileID: 1976807734}
+  livesGUI: {fileID: 0}
   pauseMenu: {fileID: 310114178}
-  isPaused: 0
+--- !u!4 &1287727191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287727189}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1410212685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1256,7 @@ GameObject:
   - component: {fileID: 1592276454}
   - component: {fileID: 1592276453}
   - component: {fileID: 1592276452}
+  - component: {fileID: 1592276455}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1281,7 +1327,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1592276453}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1592276455}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1592276453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1472,6 +1530,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842233834}
   m_CullTransparentMesh: 1
+--- !u!114 &1592276455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592276450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115c7ce88d10e8143b5f3f8241a1bf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1875004134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1722,6 @@ GameObject:
   - component: {fileID: 1976807735}
   - component: {fileID: 1976807738}
   - component: {fileID: 1976807737}
-  - component: {fileID: 1976807736}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -1680,18 +1749,6 @@ RectTransform:
   m_AnchoredPosition: {x: 141, y: -1.1947}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1976807736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976807734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87af215ead6ea914dacc2d601d5f57e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1976807737
 MonoBehaviour:
   m_ObjectHideFlags: 0
