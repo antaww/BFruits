@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject scoreGUI;
     public GameObject livesGUI;
     public GameObject pauseMenu;
+    public GameObject slashSound;
 
     private void Awake()
     {
@@ -39,7 +40,8 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points)
     {
         score += points;
-        print("Score: " + score);
+        slashSound.GetComponent<AudioSource>().time = 1.2f;
+        slashSound.GetComponent<AudioSource>().Play();
     }
 
     // ReSharper disable Unity.PerformanceAnalysis

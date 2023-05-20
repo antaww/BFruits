@@ -600,7 +600,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 498107f44d7827d40a9a25c5bbc574f7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.144
   m_Pitch: 1
   Loop: 0
@@ -880,6 +880,7 @@ MonoBehaviour:
   scoreGUI: {fileID: 1976807734}
   livesGUI: {fileID: 0}
   pauseMenu: {fileID: 310114178}
+  slashSound: {fileID: 982683409}
 --- !u!4 &1287727191
 Transform:
   m_ObjectHideFlags: 0
