@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fruit : MonoBehaviour
@@ -20,7 +18,7 @@ public class Fruit : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
-        //todo: subtract score
+        //todo: remove 1 life
     }
     
     void Update()
