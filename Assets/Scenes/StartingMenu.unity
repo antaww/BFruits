@@ -1178,6 +1178,8 @@ GameObject:
   - component: {fileID: 1124366283}
   - component: {fileID: 1124366282}
   - component: {fileID: 1124366285}
+  - component: {fileID: 1124366286}
+  - component: {fileID: 1124366287}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -1336,6 +1338,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a694ebafe81cbea45a36296ddb5cd6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1124366286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124366280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1999d84333b48ff418b35ebce4c48040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1124366287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124366280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1124366286}
+          m_TargetAssemblyTypeName: Hover, Assembly-CSharp
+          m_MethodName: HoverEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1124366286}
+          m_TargetAssemblyTypeName: Hover, Assembly-CSharp
+          m_MethodName: HoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1222282928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1407,7 @@ GameObject:
   - component: {fileID: 1222282932}
   - component: {fileID: 1222282931}
   - component: {fileID: 1222282930}
+  - component: {fileID: 1222282933}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1458,6 +1518,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222282928}
   m_CullTransparentMesh: 1
+--- !u!114 &1222282933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222282928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1999d84333b48ff418b35ebce4c48040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1376915735
 GameObject:
   m_ObjectHideFlags: 0
