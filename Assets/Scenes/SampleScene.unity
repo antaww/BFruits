@@ -510,7 +510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450678138}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3.2}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1428,24 +1428,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1287727190}
   fruitsList:
-  - {fileID: 1829371231341652, guid: 426b44a7575f71e479fab4f4e8431989, type: 3}
-  - {fileID: 1369001872449898, guid: 2f2e54b9f3898eb46a0b47f9a4d4c52b, type: 3}
-  - {fileID: 1407451490957870, guid: 3ce32ffa6ccf60e4ab65d9e396f43433, type: 3}
-  - {fileID: 1802840387486672, guid: 8f38e57a49b1c844081ad6bb3c553f13, type: 3}
-  - {fileID: 1638444836145330, guid: 031f4f4b1f7d8b7489da0919e18ceac3, type: 3}
-  - {fileID: 1541859410316496, guid: 4fe5a7bcbee1651418ea031a87ff53e4, type: 3}
-  - {fileID: 1329430274803916, guid: 8c8c7d8f829a2d24ebe78eddb5eaff57, type: 3}
-  - {fileID: 1763817136346132, guid: 0f3575c567ebe8241a4a6ad511fd7017, type: 3}
-  - {fileID: 1724972533694550, guid: 63e523ab5d9ce7348b431ae1d689a54d, type: 3}
-  - {fileID: 1125202155953082, guid: 573bb482e4baeec4386587db7cc07515, type: 3}
+  - {fileID: 5279534676263679986, guid: ef7370ab03ee3694dace69de71f7a247, type: 3}
+  - {fileID: 6104471475602763961, guid: 8e9dec7a00798584d89a9a61700f57fe, type: 3}
+  - {fileID: 7845168532104395746, guid: d18d02a2ee79c9d4ea1ff34ebef8c2b6, type: 3}
+  - {fileID: 7674196398654854225, guid: 4ca65bcd6f62a234089410371a3ad813, type: 3}
+  - {fileID: 8428806436309670769, guid: b146b49fca2877c49994af0398e8f895, type: 3}
   bombPrefab: {fileID: 4473449225418355192, guid: c8eafb37041b41c45bcc6a8be84a1bbf, type: 3}
-  bombChance: 0.05
+  bombChance: 0.01
   minSpawnDelay: 0.25
   maxSpawnDelay: 1
   minAngle: -15
   maxAngle: 15
   minForce: 18
   maxForce: 22
+  left: -0.2
+  right: 0.2
 --- !u!65 &1553149067
 BoxCollider:
   m_ObjectHideFlags: 0

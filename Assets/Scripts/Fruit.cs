@@ -5,14 +5,18 @@ public class Fruit : MonoBehaviour
     private const float RotationForce = 200;
 
     public GameObject fruitJuice;
+    public GameObject slicedFruit;
     public GameObject explosionVFX;
     private GameManager _gameManager;
-    
+
+    private Rigidbody _rb;
+
     private void Awake()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _rb = GetComponent<Rigidbody>();
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
@@ -23,7 +27,7 @@ public class Fruit : MonoBehaviour
         Destroy(explosion, 1f);
         _gameManager.AddScore(1);
     }
-    
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
@@ -34,21 +38,25 @@ public class Fruit : MonoBehaviour
     {
         transform.Rotate(Vector2.right * (Time.deltaTime * RotationForce));
     }
-    
+
     private void InstantiateSlicedFruit()
-     {
-         // GameObject instantiatedFruit = Instantiate(slicedFruit, transform.position, transform.rotation);
-         var instantiatedJuice = Instantiate(fruitJuice, new Vector3(transform.position.x, transform.position.y, 0), fruitJuice.transform.rotation);
+    {
+        var transformVar = transform; // Optimization
+        var position = transformVar.position; // Optimization
 
-         // Rigidbody[] slicedRb = instantiatedFruit.transform.GetComponentsInChildren<Rigidbody>();
+        var instantiatedSlicedFruit = Instantiate(slicedFruit, position, transformVar.rotation);
+        var instantiatedJuice =
+            Instantiate(fruitJuice, new Vector3(position.x, position.y, 0), fruitJuice.transform.rotation);
 
-         // foreach(Rigidbody srb in slicedRb)
-         // {
-         //     srb.AddExplosionForce(130f, transform.position, 10);
-         //     srb.velocity = rb.velocity * 1.2f;
-         // }
+        var slicedRb = instantiatedSlicedFruit.transform.GetComponentsInChildren<Rigidbody>();
 
-         // Destroy(instantiatedFruit, 5);
-         Destroy(instantiatedJuice, 5);
-     }
+        foreach (var srb in slicedRb)
+        {
+            srb.AddExplosionForce(130f, transform.position, 10);
+            srb.velocity = _rb.velocity * 1.2f;
+        }
+
+        Destroy(instantiatedSlicedFruit, 5);
+        Destroy(instantiatedJuice, 5);
+    }
 }

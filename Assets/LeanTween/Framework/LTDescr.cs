@@ -115,7 +115,7 @@ public class LTDescr
 
 	public int uniqueId{
 		get{ 
-			uint toId = _id | counter << 16;
+			var toId = _id | counter << 16;
 
 			/*uint backId = toId & 0xFFFF;
 			uint backCounter = toId >> 16;
@@ -346,11 +346,11 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			Vector3 origPos = trans.localPosition;
-			Vector3 rotateAroundPt = (Vector3)trans.TransformPoint( this._optional.point );
+			var origPos = trans.localPosition;
+			var rotateAroundPt = (Vector3)trans.TransformPoint( this._optional.point );
 			// Debug.Log("this._optional.point:"+this._optional.point);
             trans.RotateAround(rotateAroundPt, this._optional.axis, -this._optional.lastVal);
-			Vector3 diff = origPos - trans.localPosition;
+			var diff = origPos - trans.localPosition;
 
             trans.localPosition = origPos - diff; // Subtract the amount the object has been shifted over by the rotate, to get it back to it's orginal position
 			trans.rotation = this._optional.origRotation;
@@ -372,13 +372,13 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			Vector3 origPos = trans.localPosition;
+			var origPos = trans.localPosition;
             trans.RotateAround((Vector3)trans.TransformPoint( this._optional.point ), trans.TransformDirection(this._optional.axis), -this._optional.lastVal);
-			Vector3 diff = origPos - trans.localPosition;
+			var diff = origPos - trans.localPosition;
 
             trans.localPosition = origPos - diff; // Subtract the amount the object has been shifted over by the rotate, to get it back to it's orginal position
 			trans.localRotation = this._optional.origRotation;
-			Vector3 rotateAroundPt = (Vector3)trans.TransformPoint( this._optional.point );
+			var rotateAroundPt = (Vector3)trans.TransformPoint( this._optional.point );
 			trans.RotateAround(rotateAroundPt, trans.TransformDirection(this._optional.axis), val);
 
             this._optional.lastVal = val;
@@ -394,19 +394,19 @@ public class LTDescr
 			this.easeInternal = this.alpha;
 			break;	
 			#else
-			SpriteRenderer ren = trans.GetComponent<SpriteRenderer>();
+			var ren = trans.GetComponent<SpriteRenderer>();
 			if(ren!=null){
 				this.fromInternal.x = ren.color.a;
 			}else{
 				if(trans.GetComponent<Renderer>()!=null && trans.GetComponent<Renderer>().material.HasProperty("_Color")){
 					this.fromInternal.x = trans.GetComponent<Renderer>().material.color.a;
 				}else if(trans.GetComponent<Renderer>()!=null && trans.GetComponent<Renderer>().material.HasProperty("_TintColor")){
-					Color col = trans.GetComponent<Renderer>().material.GetColor("_TintColor");
+					var col = trans.GetComponent<Renderer>().material.GetColor("_TintColor");
 					this.fromInternal.x = col.a;
 				}else if(trans.childCount>0){
 					foreach (Transform child in trans) {
 						if(child.gameObject.GetComponent<Renderer>()!=null){
-							Color col = child.gameObject.GetComponent<Renderer>().material.color;
+							var col = child.gameObject.GetComponent<Renderer>().material.color;
 							this.fromInternal.x = col.a;
 							break;
 						}
@@ -463,19 +463,19 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			Mesh mesh = trans.GetComponent<MeshFilter>().mesh;
-			Vector3[] vertices = mesh.vertices;
-			Color32[] colors = new Color32[vertices.Length];
+			var mesh = trans.GetComponent<MeshFilter>().mesh;
+			var vertices = mesh.vertices;
+			var colors = new Color32[vertices.Length];
 			if (colors.Length == 0){ //MaxFW fix: add vertex colors if the mesh doesn't have any             
-				Color32 transparentWhiteColor32 = new Color32(0xff, 0xff, 0xff, 0x00);
+				var transparentWhiteColor32 = new Color32(0xff, 0xff, 0xff, 0x00);
 				colors = new Color32[mesh.vertices.Length];
-				for (int k=0; k<colors.Length; k++)
+				for (var k=0; k<colors.Length; k++)
 					colors[k] = transparentWhiteColor32;
 				mesh.colors32 = colors;
 			}// fix end
-			Color32 c = mesh.colors32[0];
+			var c = mesh.colors32[0];
 			c = new Color( c.r, c.g, c.b, val);
-			for (int k= 0; k < vertices.Length; k++)
+			for (var k= 0; k < vertices.Length; k++)
 				colors[k] = c;
 			mesh.colors32 = colors;
 		};
@@ -497,20 +497,20 @@ public class LTDescr
 			}
 			}
 			#else
-			SpriteRenderer renColor = trans.GetComponent<SpriteRenderer>();
+			var renColor = trans.GetComponent<SpriteRenderer>();
 			if(renColor!=null){
 				this.setFromColor( renColor.color );
 			}else{
 				if(trans.GetComponent<Renderer>()!=null && trans.GetComponent<Renderer>().material.HasProperty("_Color")){
-					Color col = trans.GetComponent<Renderer>().material.color;
+					var col = trans.GetComponent<Renderer>().material.color;
 					this.setFromColor( col );
 				}else if(trans.GetComponent<Renderer>()!=null && trans.GetComponent<Renderer>().material.HasProperty("_TintColor")){
-					Color col = trans.GetComponent<Renderer>().material.GetColor ("_TintColor");
+					var col = trans.GetComponent<Renderer>().material.GetColor ("_TintColor");
 					this.setFromColor( col );
 				}else if(trans.childCount>0){
 					foreach (Transform child in trans) {
 						if(child.gameObject.GetComponent<Renderer>()!=null){
-							Color col = child.gameObject.GetComponent<Renderer>().material.color;
+							var col = child.gameObject.GetComponent<Renderer>().material.color;
 							this.setFromColor( col );
 							break;
 						}
@@ -522,7 +522,7 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			Color toColor = tweenColor(this, val);
+			var toColor = tweenColor(this, val);
 
 			#if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2
 
@@ -553,7 +553,7 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			Color toColor = tweenColor(this, val);
+			var toColor = tweenColor(this, val);
 
 			#if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2
 			if(this.spriteRen!=null){
@@ -589,7 +589,7 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			Color toColor = tweenColor(this, val);
+			var toColor = tweenColor(this, val);
 			this.uiText.color = toColor;
 			if (dt!=0f && this._optional.onUpdateColor != null)
 				this._optional.onUpdateColor(toColor);
@@ -620,9 +620,9 @@ public class LTDescr
 			newVect = easeMethod();
 			val = newVect.x;
 			if(this.uiImage!=null){
-				Color c = this.uiImage.color; c.a = val; this.uiImage.color = c;
+				var c = this.uiImage.color; c.a = val; this.uiImage.color = c;
 			}else if(this.rawImage!=null){
-				Color c = this.rawImage.color; c.a = val; this.rawImage.color = c;
+				var c = this.rawImage.color; c.a = val; this.rawImage.color = c;
 			}
 			if(this.useRecursion){
 				alphaRecursive( this.rectTransform, val, 0 );
@@ -654,7 +654,7 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			Color toColor = tweenColor(this, val);
+			var toColor = tweenColor(this, val);
 			if(this.uiImage!=null){
 				this.uiImage.color = toColor;
 			}else if(this.rawImage!=null){
@@ -673,21 +673,21 @@ public class LTDescr
 	public LTDescr setCanvasMoveX(){
 		this.type = TweenAction.CANVAS_MOVE_X;
 		this.initInternal = ()=>{ this.fromInternal.x = this.rectTransform.anchoredPosition3D.x; };
-		this.easeInternal = ()=>{ Vector3 c = this.rectTransform.anchoredPosition3D; this.rectTransform.anchoredPosition3D = new Vector3(easeMethod().x, c.y, c.z); };
+		this.easeInternal = ()=>{ var c = this.rectTransform.anchoredPosition3D; this.rectTransform.anchoredPosition3D = new Vector3(easeMethod().x, c.y, c.z); };
 		return this;
 	}
 
 	public LTDescr setCanvasMoveY(){
 		this.type = TweenAction.CANVAS_MOVE_Y;
 		this.initInternal = ()=>{ this.fromInternal.x = this.rectTransform.anchoredPosition3D.y; };
-		this.easeInternal = ()=>{ Vector3 c = this.rectTransform.anchoredPosition3D; this.rectTransform.anchoredPosition3D = new Vector3(c.x, easeMethod().x, c.z); };
+		this.easeInternal = ()=>{ var c = this.rectTransform.anchoredPosition3D; this.rectTransform.anchoredPosition3D = new Vector3(c.x, easeMethod().x, c.z); };
 		return this;
 	}
 
 	public LTDescr setCanvasMoveZ(){
 		this.type = TweenAction.CANVAS_MOVE_Z;
 		this.initInternal = ()=>{ this.fromInternal.x = this.rectTransform.anchoredPosition3D.z; };
-		this.easeInternal = ()=>{ Vector3 c = this.rectTransform.anchoredPosition3D; this.rectTransform.anchoredPosition3D = new Vector3(c.x, c.y, easeMethod().x); };
+		this.easeInternal = ()=>{ var c = this.rectTransform.anchoredPosition3D; this.rectTransform.anchoredPosition3D = new Vector3(c.x, c.y, easeMethod().x); };
 		return this;
 	}
 
@@ -703,10 +703,10 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			RectTransform rect = this.rectTransform;
-			Vector3 origPos = rect.localPosition;
+			var rect = this.rectTransform;
+			var origPos = rect.localPosition;
 			rect.RotateAround((Vector3)rect.TransformPoint( this._optional.point ), this._optional.axis, -val);
-			Vector3 diff = origPos - rect.localPosition;
+			var diff = origPos - rect.localPosition;
 
 			rect.localPosition = origPos - diff; // Subtract the amount the object has been shifted over by the rotate, to get it back to it's orginal position
 			rect.rotation = this._optional.origRotation;
@@ -721,10 +721,10 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			RectTransform rect = this.rectTransform;
-			Vector3 origPos = rect.localPosition;
+			var rect = this.rectTransform;
+			var origPos = rect.localPosition;
 			rect.RotateAround((Vector3)rect.TransformPoint( this._optional.point ), rect.TransformDirection(this._optional.axis), -val);
-			Vector3 diff = origPos - rect.localPosition;
+			var diff = origPos - rect.localPosition;
 
 			rect.localPosition = origPos - diff; // Subtract the amount the object has been shifted over by the rotate, to get it back to it's orginal position
 			rect.rotation = this._optional.origRotation;
@@ -742,7 +742,7 @@ public class LTDescr
 		this.easeInternal = ()=>{
 			newVect = easeMethod();
 			val = newVect.x;
-			int frame = (int)Mathf.Round( val );
+			var frame = (int)Mathf.Round( val );
 			this.uiImage.sprite = this.sprites[ frame ];
 		};
 		return this;
@@ -852,21 +852,21 @@ public class LTDescr
 	public LTDescr setGUIMove(){
 		this.type = TweenAction.GUI_MOVE;
 		this.initInternal = ()=>{ this.from = new Vector3(this._optional.ltRect.rect.x, this._optional.ltRect.rect.y, 0); };
-		this.easeInternal = ()=>{ Vector3 v = easeMethod(); this._optional.ltRect.rect = new Rect( v.x, v.y, this._optional.ltRect.rect.width, this._optional.ltRect.rect.height); };
+		this.easeInternal = ()=>{ var v = easeMethod(); this._optional.ltRect.rect = new Rect( v.x, v.y, this._optional.ltRect.rect.width, this._optional.ltRect.rect.height); };
 		return this;
 	}
 
 	public LTDescr setGUIMoveMargin(){
 		this.type = TweenAction.GUI_MOVE_MARGIN;
 		this.initInternal = ()=>{ this.from = new Vector2(this._optional.ltRect.margin.x, this._optional.ltRect.margin.y); };
-		this.easeInternal = ()=>{ Vector3 v = easeMethod(); this._optional.ltRect.margin = new Vector2(v.x, v.y); };
+		this.easeInternal = ()=>{ var v = easeMethod(); this._optional.ltRect.margin = new Vector2(v.x, v.y); };
 		return this;
 	}
 
 	public LTDescr setGUIScale(){
 		this.type = TweenAction.GUI_SCALE;
 		this.initInternal = ()=>{ this.from = new Vector3(this._optional.ltRect.rect.width, this._optional.ltRect.rect.height, 0); };
-		this.easeInternal = ()=>{ Vector3 v = easeMethod(); this._optional.ltRect.rect = new Rect( this._optional.ltRect.rect.x, this._optional.ltRect.rect.y, v.x, v.y); };
+		this.easeInternal = ()=>{ var v = easeMethod(); this._optional.ltRect.rect = new Rect( this._optional.ltRect.rect.x, this._optional.ltRect.rect.y, v.x, v.y); };
 		return this;
 	}
 
@@ -960,7 +960,7 @@ public class LTDescr
 
 	public bool updateInternal(){
 
-		float directionLocal = this.direction;
+		var directionLocal = this.direction;
 		if(this.usesNormalDt){
 			dt = LeanTween.dtActual;
 		}else if( this.useEstimatedTime ){
@@ -993,7 +993,7 @@ public class LTDescr
 			if(this.hasUpdateCallback)
 				this._optional.callOnUpdate(val, this.ratioPassed);
 
-			bool isTweenFinished = directionLocal>0f ? this.passed>=this.time : this.passed<=0f;
+			var isTweenFinished = directionLocal>0f ? this.passed>=this.time : this.passed<=0f;
 			//			Debug.Log("lt "+this+" dt:"+dt+" fin:"+isTweenFinished);
 			if(isTweenFinished){ // increment or flip tween
 				this.loopCount--;
@@ -1041,13 +1041,13 @@ public class LTDescr
 	}
 
 	private static void alphaRecursive( Transform transform, float val, bool useRecursion = true){
-		Renderer renderer = transform.gameObject.GetComponent<Renderer>();
+		var renderer = transform.gameObject.GetComponent<Renderer>();
 		if(renderer!=null){
-			foreach(Material mat in renderer.materials){
+			foreach(var mat in renderer.materials){
 				if(mat.HasProperty("_Color")){
 					mat.color = new Color( mat.color.r, mat.color.g, mat.color.b, val);
 				}else if(mat.HasProperty("_TintColor")){
-					Color col = mat.GetColor ("_TintColor");
+					var col = mat.GetColor ("_TintColor");
 					mat.SetColor("_TintColor", new Color( col.r, col.g, col.b, val));
 				}
 			}
@@ -1060,9 +1060,9 @@ public class LTDescr
 	}
 
 	private static void colorRecursive( Transform transform, Color toColor, bool useRecursion = true ){
-		Renderer ren = transform.gameObject.GetComponent<Renderer>();
+		var ren = transform.gameObject.GetComponent<Renderer>();
 		if(ren!=null){
-			foreach(Material mat in ren.materials){
+			foreach(var mat in ren.materials){
 				mat.color = toColor;
 			}
 		}
@@ -1080,11 +1080,11 @@ public class LTDescr
 			foreach (RectTransform child in rectTransform) {
 				UnityEngine.UI.MaskableGraphic uiImage = child.GetComponent<UnityEngine.UI.Image>();
 				if (uiImage != null) {
-					Color c = uiImage.color; c.a = val; uiImage.color = c;
+					var c = uiImage.color; c.a = val; uiImage.color = c;
 				} else {
 					uiImage = child.GetComponent<UnityEngine.UI.RawImage>();
 					if (uiImage != null) {
-						Color c = uiImage.color; c.a = val; uiImage.color = c;
+						var c = uiImage.color; c.a = val; uiImage.color = c;
 					}
 				}
 
@@ -1096,7 +1096,7 @@ public class LTDescr
 	private static void alphaRecursiveSprite( Transform transform, float val ){
 		if(transform.childCount>0){
 			foreach (Transform child in transform) {
-				SpriteRenderer ren = child.GetComponent<SpriteRenderer>();
+				var ren = child.GetComponent<SpriteRenderer>();
 				if(ren!=null)
 					ren.color = new Color( ren.color.r, ren.color.g, ren.color.b, val);
 				alphaRecursiveSprite(child, val);
@@ -1107,7 +1107,7 @@ public class LTDescr
 	private static void colorRecursiveSprite( Transform transform, Color toColor ){
 		if(transform.childCount>0){
 			foreach (Transform child in transform) {
-				SpriteRenderer ren = transform.gameObject.GetComponent<SpriteRenderer>();
+				var ren = transform.gameObject.GetComponent<SpriteRenderer>();
 				if(ren!=null)
 					ren.color = toColor;
 				colorRecursiveSprite(child, toColor);
@@ -1136,9 +1136,9 @@ public class LTDescr
 		
 		if(useRecursion && trans.childCount>0){
 			foreach (Transform child in trans) {
-				UnityEngine.UI.Text uiText = child.GetComponent<UnityEngine.UI.Text>();
+				var uiText = child.GetComponent<UnityEngine.UI.Text>();
 				if(uiText!=null){
-					Color c = uiText.color;
+					var c = uiText.color;
 					c.a = val;
 					uiText.color = c;
 				}
@@ -1148,9 +1148,9 @@ public class LTDescr
 	}
 
 	private static void textAlphaRecursive( Transform trans, float val, bool useRecursion = true ){
-		UnityEngine.UI.Text uiText = trans.GetComponent<UnityEngine.UI.Text>();
+		var uiText = trans.GetComponent<UnityEngine.UI.Text>();
 		if(uiText!=null){
-			Color c = uiText.color;
+			var c = uiText.color;
 			c.a = val;
 			uiText.color = c;
 		}
@@ -1164,7 +1164,7 @@ public class LTDescr
 	private static void textColorRecursive(Transform trans, Color toColor ){
 		if(trans.childCount>0){
 			foreach (Transform child in trans) {
-				UnityEngine.UI.Text uiText = child.GetComponent<UnityEngine.UI.Text>();
+				var uiText = child.GetComponent<UnityEngine.UI.Text>();
 				if(uiText!=null){
 					uiText.color = toColor;
 				}
@@ -1175,8 +1175,8 @@ public class LTDescr
 	#endif
 
 	private static Color tweenColor( LTDescr tween, float val ){
-		Vector3 diff3 = tween._optional.point - tween._optional.axis;
-		float diffAlpha = tween.to.y - tween.from.y;
+		var diff3 = tween._optional.point - tween._optional.axis;
+		var diffAlpha = tween.to.y - tween.from.y;
 		return new Color(tween._optional.axis.x + diff3.x*val, tween._optional.axis.y + diff3.y*val, tween._optional.axis.z + diff3.z*val, tween.from.y + diffAlpha*val);
 	}
 
@@ -1604,19 +1604,19 @@ public class LTDescr
 	private Vector3 easeInBack(){
 		val = this.ratioPassed;
 		val /= 1;
-		float s = 1.70158f * this.overshoot;
+		var s = 1.70158f * this.overshoot;
 		return this.diff * (val) * val * ((s + 1) * val - s) + this.from;
 	}
 
 	private Vector3 easeOutBack(){
-		float s = 1.70158f * this.overshoot;
+		var s = 1.70158f * this.overshoot;
 		val = (this.ratioPassed / 1) - 1;
 		val = ((val) * val * ((s + 1) * val + s) + 1);
 		return this.diff * val + this.from;
 	}
 
 	private Vector3 easeInOutBack(){
-		float s = 1.70158f * this.overshoot;
+		var s = 1.70158f * this.overshoot;
 		val = this.ratioPassed * 2f;
 		if ((val) < 1){
 			s *= (1.525f) * overshoot;
@@ -1795,7 +1795,7 @@ public class LTDescr
 	* descr.setTime( 1f );<br>
 	*/
 	public LTDescr setTime( float time ){
-		float passedTimeRatio = this.passed / this.time;
+		var passedTimeRatio = this.passed / this.time;
 		this.passed = time * passedTimeRatio;
 		this.time = time;
 		return this;

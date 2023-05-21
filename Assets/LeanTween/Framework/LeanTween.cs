@@ -296,8 +296,8 @@ public class LeanTween : MonoBehaviour {
     */
     public static int tweensRunning{
         get{ 
-            int count = 0;
-            for (int i = 0; i <= tweenMaxSearch; i++){
+            var count = 0;
+            for (var i = 0; i <= tweenMaxSearch; i++){
                 if (tweens[i].toggle){
                     count++;
                 }
@@ -337,7 +337,7 @@ public class LeanTween : MonoBehaviour {
             #else
             DontDestroyOnLoad( _tweenEmpty );
             #endif
-            for(int i = 0; i < maxTweens; i++){
+            for(var i = 0; i < maxTweens; i++){
                 tweens[i] = new LTDescr();
             }
 
@@ -347,7 +347,7 @@ public class LeanTween : MonoBehaviour {
 
             sequences = new LTSeq[ maxSimultaneousSequences ]; 
 
-            for(int i = 0; i < maxSimultaneousSequences; i++){
+            for(var i = 0; i < maxSimultaneousSequences; i++){
                 sequences[i] = new LTSeq();
             }
         }
@@ -355,7 +355,7 @@ public class LeanTween : MonoBehaviour {
 
     public static void reset(){
         if(tweens!=null){
-            for (int i = 0; i <= tweenMaxSearch; i++){
+            for (var i = 0; i <= tweenMaxSearch; i++){
                 if(tweens[i]!=null)
                     tweens[i].toggle = false;
             }
@@ -402,7 +402,7 @@ public class LeanTween : MonoBehaviour {
             finishedCnt = 0;
             // if(tweenMaxSearch>1500)
             //           Debug.Log("tweenMaxSearch:"+tweenMaxSearch +" maxTweens:"+maxTweens);
-            for( int i = 0; i <= tweenMaxSearch && i < maxTweens; i++){
+            for( var i = 0; i <= tweenMaxSearch && i < maxTweens; i++){
                 tween = tweens[i];
 //              if(i==0 && tweens[i].toggle)
 //                  Debug.Log("tweens["+i+"]"+tweens[i]);
@@ -421,7 +421,7 @@ public class LeanTween : MonoBehaviour {
             tweenMaxSearch = maxTweenReached;
             frameRendered = Time.frameCount;
 
-            for(int i = 0; i < finishedCnt; i++){
+            for(var i = 0; i < finishedCnt; i++){
                 j = tweensFinished[i];
                 tween = tweens[ j ];
 
@@ -473,7 +473,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     public static Vector3[] add(Vector3[] a, Vector3 b){
-        Vector3[] c = new Vector3[ a.Length ];
+        var c = new Vector3[ a.Length ];
         for(i=0; i<a.Length; i++){
             c[i] = a[i] + b;
         }
@@ -482,11 +482,11 @@ public class LeanTween : MonoBehaviour {
     }
 
     public static float closestRot( float from, float to ){
-        float minusWhole = 0 - (360 - to);
-        float plusWhole = 360 + to;
-        float toDiffAbs = Mathf.Abs( to-from );
-        float minusDiff = Mathf.Abs(minusWhole-from);
-        float plusDiff = Mathf.Abs(plusWhole-from);
+        var minusWhole = 0 - (360 - to);
+        var plusWhole = 360 + to;
+        var toDiffAbs = Mathf.Abs( to-from );
+        var minusDiff = Mathf.Abs(minusWhole-from);
+        var plusDiff = Mathf.Abs(plusWhole-from);
         if( toDiffAbs < minusDiff && toDiffAbs < plusDiff ){
             return to;
         }else {
@@ -510,7 +510,7 @@ public class LeanTween : MonoBehaviour {
     }
     public static void cancelAll(bool callComplete){
         init();
-        for (int i = 0; i <= tweenMaxSearch; i++)
+        for (var i = 0; i <= tweenMaxSearch; i++)
         {
             if (tweens[i].trans != null){
                 if (callComplete && tweens[i].optional.onComplete != null)
@@ -534,9 +534,9 @@ public class LeanTween : MonoBehaviour {
     }
     public static void cancel( GameObject gameObject, bool callOnComplete ){
         init();
-        Transform trans = gameObject.transform;
-        for(int i = 0; i <= tweenMaxSearch; i++){
-            LTDescr tween = tweens[i];
+        var trans = gameObject.transform;
+        for(var i = 0; i <= tweenMaxSearch; i++){
+            var tween = tweens[i];
             if(tween!=null && tween.toggle && tween.trans==trans){
                 if (callOnComplete && tween.optional.onComplete != null)
                     tween.optional.onComplete();
@@ -563,8 +563,8 @@ public class LeanTween : MonoBehaviour {
     public static void cancel( GameObject gameObject, int uniqueId, bool callOnComplete = false ){
         if(uniqueId>=0){
             init();
-            int backId = uniqueId & 0xFFFF;
-            int backCounter = uniqueId >> 16;
+            var backId = uniqueId & 0xFFFF;
+            var backCounter = uniqueId >> 16;
                 // Debug.Log("uniqueId:"+uniqueId+ " id:"+backId +" counter:"+backCounter + " setCounter:"+ tw     eens[backId].counter + " tweens[id].type:"+tweens[backId].type);
             if(tweens[backId].trans==null || (tweens[backId].trans.gameObject == gameObject && tweens[backId].counter==backCounter)) {
                 if (callOnComplete && tweens[backId].optional.onComplete != null)
@@ -577,8 +577,8 @@ public class LeanTween : MonoBehaviour {
     public static void cancel( LTRect ltRect, int uniqueId ){
         if(uniqueId>=0){
             init();
-            int backId = uniqueId & 0xFFFF;
-            int backCounter = uniqueId >> 16;
+            var backId = uniqueId & 0xFFFF;
+            var backCounter = uniqueId >> 16;
             // Debug.Log("uniqueId:"+uniqueId+ " id:"+backId +" action:"+(TweenAction)backType + " tweens[id].type:"+tweens[backId].type);
             if(tweens[backId]._optional.ltRect == ltRect && tweens[backId].counter==backCounter)
                 removeTween((int)backId);
@@ -600,17 +600,17 @@ public class LeanTween : MonoBehaviour {
     public static void cancel( int uniqueId, bool callOnComplete ){
         if(uniqueId>=0){
             init();
-            int backId = uniqueId & 0xFFFF;
-            int backCounter = uniqueId >> 16;
+            var backId = uniqueId & 0xFFFF;
+            var backCounter = uniqueId >> 16;
             if (backId > tweens.Length - 1) { // sequence
-                int sequenceId = backId - tweens.Length;
-                LTSeq seq = sequences[sequenceId];
+                var sequenceId = backId - tweens.Length;
+                var seq = sequences[sequenceId];
                 // Debug.Log("sequenceId:" + sequenceId+" maxSequences:"+maxSequences+" prev:"+seq.previous);
 
-                for (int i = 0; i < maxSequences; i++) {
+                for (var i = 0; i < maxSequences; i++) {
                     if (seq.current.tween != null) {
-                        int tweenId = seq.current.tween.uniqueId;
-                        int tweenIndex = tweenId & 0xFFFF;
+                        var tweenId = seq.current.tween.uniqueId;
+                        var tweenIndex = tweenId & 0xFFFF;
                         removeTween(tweenIndex);
                     }
                     if (seq.current.previous == null)
@@ -642,15 +642,15 @@ public class LeanTween : MonoBehaviour {
     public static LTDescr descr( int uniqueId ){
         init();
 
-        int backId = uniqueId & 0xFFFF;
-        int backCounter = uniqueId >> 16;
+        var backId = uniqueId & 0xFFFF;
+        var backCounter = uniqueId >> 16;
 
 //      Debug.Log("backId:" + backId+" backCounter:"+backCounter);
         if (tweens[backId] != null && tweens[backId].uniqueId == uniqueId && tweens[backId].counter == backCounter) {
             // Debug.Log("tween count:" + tweens[backId].counter);
             return tweens[backId];
         }
-        for(int i = 0; i <= tweenMaxSearch; i++){
+        for(var i = 0; i <= tweenMaxSearch; i++){
             if (tweens[i].uniqueId == uniqueId && tweens[i].counter == backCounter) {
                 return tweens[i];
             }
@@ -676,9 +676,9 @@ public class LeanTween : MonoBehaviour {
     public static LTDescr[] descriptions(GameObject gameObject = null) {
         if (gameObject == null) return null;
 
-        List<LTDescr> descrs = new List<LTDescr>();
-        Transform trans = gameObject.transform;
-        for (int i = 0; i <= tweenMaxSearch; i++) {
+        var descrs = new List<LTDescr>();
+        var trans = gameObject.transform;
+        for (var i = 0; i <= tweenMaxSearch; i++) {
             if (tweens[i].toggle && tweens[i].trans == trans)
                 descrs.Add( tweens[i] );
         }
@@ -702,8 +702,8 @@ public class LeanTween : MonoBehaviour {
     * LeanTween.resume( id );
     */
     public static void pause( int uniqueId ){
-        int backId = uniqueId & 0xFFFF;
-        int backCounter = uniqueId >> 16;
+        var backId = uniqueId & 0xFFFF;
+        var backCounter = uniqueId >> 16;
         if(tweens[backId].counter==backCounter){
             tweens[backId].pause();
         }
@@ -716,8 +716,8 @@ public class LeanTween : MonoBehaviour {
     * @param {GameObject} gameObject:GameObject GameObject whose tweens you want to pause
     */
     public static void pause( GameObject gameObject ){
-        Transform trans = gameObject.transform;
-        for(int i = 0; i <= tweenMaxSearch; i++){
+        var trans = gameObject.transform;
+        for(var i = 0; i <= tweenMaxSearch; i++){
             if(tweens[i].trans==trans){
                 tweens[i].pause();
             }
@@ -731,7 +731,7 @@ public class LeanTween : MonoBehaviour {
     */
     public static void pauseAll(){
         init();
-        for (int i = 0; i <= tweenMaxSearch; i++){
+        for (var i = 0; i <= tweenMaxSearch; i++){
             tweens[i].pause();
         }
     }
@@ -743,7 +743,7 @@ public class LeanTween : MonoBehaviour {
     */
     public static void resumeAll(){
         init();
-        for (int i = 0; i <= tweenMaxSearch; i++){
+        for (var i = 0; i <= tweenMaxSearch; i++){
             tweens[i].resume();
         }
     }
@@ -765,8 +765,8 @@ public class LeanTween : MonoBehaviour {
     * LeanTween.resume( id );
     */
     public static void resume( int uniqueId ){
-        int backId = uniqueId & 0xFFFF;
-        int backCounter = uniqueId >> 16;
+        var backId = uniqueId & 0xFFFF;
+        var backCounter = uniqueId >> 16;
         if(tweens[backId].counter==backCounter){
             tweens[backId].resume();
         }
@@ -779,8 +779,8 @@ public class LeanTween : MonoBehaviour {
     * @param {GameObject} gameObject:GameObject GameObject whose tweens you want to resume
     */
     public static void resume( GameObject gameObject ){
-        Transform trans = gameObject.transform;
-        for(int i = 0; i <= tweenMaxSearch; i++){
+        var trans = gameObject.transform;
+        for(var i = 0; i <= tweenMaxSearch; i++){
             if(tweens[i].trans==trans)
                 tweens[i].resume();
         }
@@ -796,15 +796,15 @@ public class LeanTween : MonoBehaviour {
     {
         if (gameObject == null)
         {
-            for (int i = 0; i <= tweenMaxSearch; i++)
+            for (var i = 0; i <= tweenMaxSearch; i++)
             {
                 if (Mathf.Equals(tweens[i].direction, 0f))
                     return true;
             }
             return false;
         }
-        Transform trans = gameObject.transform;
-        for (int i = 0; i <= tweenMaxSearch; i++)
+        var trans = gameObject.transform;
+        for (var i = 0; i <= tweenMaxSearch; i++)
         {
             if (Mathf.Equals(tweens[i].direction, 0f) && tweens[i].trans == trans)
                 return true;
@@ -830,8 +830,8 @@ public class LeanTween : MonoBehaviour {
     */
     public static bool isPaused(int uniqueId)
     {
-        int backId = uniqueId & 0xFFFF;
-        int backCounter = uniqueId >> 16;
+        var backId = uniqueId & 0xFFFF;
+        var backCounter = uniqueId >> 16;
         if (backId < 0 || backId >= maxTweens) return false;
         // Debug.Log("tweens[backId].counter:"+tweens[backId].counter+" backCounter:"+backCounter +" toggle:"+tweens[backId].toggle);
         if (tweens[backId].counter == backCounter && Mathf.Equals(tweens[i].direction, 0f))
@@ -849,14 +849,14 @@ public class LeanTween : MonoBehaviour {
     */
     public static bool isTweening( GameObject gameObject = null ){
         if(gameObject==null){
-            for(int i = 0; i <= tweenMaxSearch; i++){
+            for(var i = 0; i <= tweenMaxSearch; i++){
                 if(tweens[i].toggle)
                     return true;
             }
             return false;
         }
-        Transform trans = gameObject.transform;
-        for(int i = 0; i <= tweenMaxSearch; i++){
+        var trans = gameObject.transform;
+        for(var i = 0; i <= tweenMaxSearch; i++){
             if(tweens[i].toggle && tweens[i].trans==trans)
                 return true;
         }
@@ -878,8 +878,8 @@ public class LeanTween : MonoBehaviour {
     * &#160;&#160; &#160;&#160;Debug.Log("I am tweening!");<br />
     */  
     public static bool isTweening( int uniqueId ){
-        int backId = uniqueId & 0xFFFF;
-        int backCounter = uniqueId >> 16;
+        var backId = uniqueId & 0xFFFF;
+        var backCounter = uniqueId >> 16;
         if (backId < 0 || backId >= maxTweens) return false;
         // Debug.Log("tweens[backId].counter:"+tweens[backId].counter+" backCounter:"+backCounter +" toggle:"+tweens[backId].toggle);
         if(tweens[backId].counter==backCounter && tweens[backId].toggle){
@@ -889,7 +889,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     public static bool isTweening( LTRect ltRect ){
-        for( int i = 0; i <= tweenMaxSearch; i++){
+        for( var i = 0; i <= tweenMaxSearch; i++){
             if(tweens[i].toggle && tweens[i]._optional.ltRect==ltRect)
                 return true;
         }
@@ -897,20 +897,20 @@ public class LeanTween : MonoBehaviour {
     }
 
     public static void drawBezierPath(Vector3 a, Vector3 b, Vector3 c, Vector3 d, float arrowSize = 0.0f, Transform arrowTransform = null){
-        Vector3 last = a;
+        var last = a;
         Vector3 p;
-        Vector3 aa = (-a + 3*(b-c) + d);
-        Vector3 bb = 3*(a+c) - 6*b;
-        Vector3 cc = 3*(b-a);
+        var aa = (-a + 3*(b-c) + d);
+        var bb = 3*(a+c) - 6*b;
+        var cc = 3*(b-a);
 
         float t;
 
         if(arrowSize>0.0f){
-            Vector3 beforePos = arrowTransform.position;
-            Quaternion beforeQ = arrowTransform.rotation;
-            float distanceTravelled = 0f;
+            var beforePos = arrowTransform.position;
+            var beforeQ = arrowTransform.rotation;
+            var distanceTravelled = 0f;
 
-            for(float k = 1.0f; k <= 120.0f; k++){
+            for(var k = 1.0f; k <= 120.0f; k++){
                 t = k / 120.0f;
                 p = ((aa* t + (bb))* t + cc)* t + a;
                 Gizmos.DrawLine(last, p);
@@ -927,9 +927,9 @@ public class LeanTween : MonoBehaviour {
 
                     arrowTransform.position = p;
                     arrowTransform.LookAt( last, Vector3.forward );
-                    Vector3 to = arrowTransform.TransformDirection(Vector3.right);
+                    var to = arrowTransform.TransformDirection(Vector3.right);
                     // Debug.Log("to:"+to+" tweenEmpty.transform.position:"+arrowTransform.position);
-                    Vector3 back = (last-p);
+                    var back = (last-p);
                     back = back.normalized;
                     Gizmos.DrawLine(p, p + (to + back)*arrowSize);
                     to = arrowTransform.TransformDirection(-Vector3.right);
@@ -941,7 +941,7 @@ public class LeanTween : MonoBehaviour {
             arrowTransform.position = beforePos;
             arrowTransform.rotation = beforeQ;
         }else{
-            for(float k = 1.0f; k <= 30.0f; k++){
+            for(var k = 1.0f; k <= 30.0f; k++){
                 t = k / 30.0f;
                 p = ((aa* t + (bb))* t + cc)* t + a;
                 Gizmos.DrawLine(last, p);
@@ -959,7 +959,7 @@ public class LeanTween : MonoBehaviour {
     public static LTDescr options(){
         init();
 
-        bool found = false;
+        var found = false;
         //      Debug.Log("Search start");
         for(j=0, i = startSearch; j <= maxTweens; i++){
             if(j >= maxTweens)
@@ -1031,8 +1031,8 @@ public class LeanTween : MonoBehaviour {
     * LeanTween.play(gameObject.GetComponent&lt;RectTransform&gt;(), sprites).setLoopPingPong();
     */  
     public static LTDescr play(RectTransform rectTransform, UnityEngine.Sprite[] sprites){
-        float defaultFrameRate = 0.25f;
-        float time = defaultFrameRate * sprites.Length;
+        var defaultFrameRate = 0.25f;
+        var time = defaultFrameRate * sprites.Length;
         return pushNewTween(rectTransform.gameObject, new Vector3((float)sprites.Length - 1.0f,0,0), time, options().setCanvasPlaySprite().setSprites( sprites ).setRepeat(-1));
     }
     #endif
@@ -1058,14 +1058,14 @@ public class LeanTween : MonoBehaviour {
     {
         init(maxTweens);
         // Loop through and find available sequence
-        for (int i = 0; i < sequences.Length; i++)
+        for (var i = 0; i < sequences.Length; i++)
         {
             //          Debug.Log("i:" + i + " sequences[i]:" + sequences[i]);
             if (sequences[i].tween == null || sequences[i].tween.toggle == false)
             {
                 if (sequences[i].toggle == false)
                 {
-                    LTSeq seq = sequences[i];
+                    var seq = sequences[i];
                     if (initSequence)
                     {
                         seq.init((uint)(i + tweens.Length), global_counter);
@@ -1099,10 +1099,10 @@ public class LeanTween : MonoBehaviour {
     * LeanTween.alpha(gameObject, 1f, 1f) .setDelay(1f);
     */
     public static LTDescr alpha(GameObject gameObject, float to, float time){
-        LTDescr lt = pushNewTween( gameObject, new Vector3(to,0,0), time, options().setAlpha() );
+        var lt = pushNewTween( gameObject, new Vector3(to,0,0), time, options().setAlpha() );
 
         #if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2
-        SpriteRenderer ren = gameObject.GetComponent<SpriteRenderer>();
+        var ren = gameObject.GetComponent<SpriteRenderer>();
         lt.spriteRen = ren;
         #endif
         return lt;
@@ -1191,9 +1191,9 @@ public class LeanTween : MonoBehaviour {
     * LeanTween.color(gameObject, Color.yellow, 1f) .setDelay(1f);
     */
     public static LTDescr color(GameObject gameObject, Color to, float time){
-        LTDescr lt = pushNewTween( gameObject, new Vector3(1.0f, to.a, 0.0f), time, options().setColor().setPoint( new Vector3(to.r, to.g, to.b) ) );
+        var lt = pushNewTween( gameObject, new Vector3(1.0f, to.a, 0.0f), time, options().setColor().setPoint( new Vector3(to.r, to.g, to.b) ) );
         #if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2
-        SpriteRenderer ren = gameObject.GetComponent<SpriteRenderer>();
+        var ren = gameObject.GetComponent<SpriteRenderer>();
         lt.spriteRen = ren;
         #endif
         return lt;
@@ -1798,11 +1798,11 @@ public class LeanTween : MonoBehaviour {
     * } );<br />
     */
     public static LTDescr value(GameObject gameObject, Color from, Color to, float time){
-        LTDescr lt = pushNewTween( gameObject, new Vector3(1f, to.a, 0f), time, options().setCallbackColor().setPoint( new Vector3(to.r, to.g, to.b) )
+        var lt = pushNewTween( gameObject, new Vector3(1f, to.a, 0f), time, options().setCallbackColor().setPoint( new Vector3(to.r, to.g, to.b) )
             .setFromColor(from).setHasInitialized(false) );
 
         #if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2
-        SpriteRenderer ren = gameObject.GetComponent<SpriteRenderer>();
+        var ren = gameObject.GetComponent<SpriteRenderer>();
         lt.spriteRen = ren;
         #endif
         return lt;
@@ -2156,11 +2156,11 @@ public class LeanTween : MonoBehaviour {
     }
 
     public static float clerp(float start, float end, float val){
-        float min = 0.0f;
-        float max = 360.0f;
-        float half = Mathf.Abs((max - min) / 2.0f);
-        float retval = 0.0f;
-        float diff = 0.0f;
+        var min = 0.0f;
+        var max = 360.0f;
+        var half = Mathf.Abs((max - min) / 2.0f);
+        var retval = 0.0f;
+        var diff = 0.0f;
         if ((end - start) < -half){
             diff = ((max - start) + end) * val;
             retval = start + diff;
@@ -2314,7 +2314,7 @@ public class LeanTween : MonoBehaviour {
 
     public static float easeInBounce(float start, float end, float val){
         end -= start;
-        float d = 1f;
+        var d = 1f;
         return end - easeOutBounce(0, end, d-val) + start;
     }
 
@@ -2337,7 +2337,7 @@ public class LeanTween : MonoBehaviour {
 
     public static float easeInOutBounce(float start, float end, float val){
         end -= start;
-        float d= 1f;
+        var d= 1f;
         if (val < d/2) return easeInBounce(0, end, val*2) * 0.5f + start;
         else return easeOutBounce(0, end, val*2-d) * 0.5f + end*0.5f + start;
     }
@@ -2345,19 +2345,19 @@ public class LeanTween : MonoBehaviour {
     public static float easeInBack(float start, float end, float val, float overshoot = 1.0f){
         end -= start;
         val /= 1;
-        float s= 1.70158f * overshoot;
+        var s= 1.70158f * overshoot;
         return end * (val) * val * ((s + 1) * val - s) + start;
     }
 
     public static float easeOutBack(float start, float end, float val, float overshoot = 1.0f){
-        float s = 1.70158f * overshoot;
+        var s = 1.70158f * overshoot;
         end -= start;
         val = (val / 1) - 1;
         return end * ((val) * val * ((s + 1) * val + s) + 1) + start;
     }
 
     public static float easeInOutBack(float start, float end, float val, float overshoot = 1.0f){
-        float s = 1.70158f * overshoot;
+        var s = 1.70158f * overshoot;
         end -= start;
         val /= .5f;
         if ((val) < 1){
@@ -2372,9 +2372,9 @@ public class LeanTween : MonoBehaviour {
     public static float easeInElastic(float start, float end, float val, float overshoot = 1.0f, float period = 0.3f){
         end -= start;
 
-        float p = period;
-        float s = 0f;
-        float a = 0f;
+        var p = period;
+        var s = 0f;
+        var a = 0f;
 
         if (val == 0f) return start;
 
@@ -2398,9 +2398,9 @@ public class LeanTween : MonoBehaviour {
     public static float easeOutElastic(float start, float end, float val, float overshoot = 1.0f, float period = 0.3f){
         end -= start;
 
-        float p = period;
-        float s = 0f;
-        float a = 0f;
+        var p = period;
+        var s = 0f;
+        var a = 0f;
 
         if (val == 0f) return start;
 
@@ -2424,9 +2424,9 @@ public class LeanTween : MonoBehaviour {
     {
         end -= start;
 
-        float p = period;
-        float s = 0f;
-        float a = 0f;
+        var p = period;
+        var s = 0f;
+        var a = 0f;
 
         if (val == 0f) return start;
 
@@ -2760,7 +2760,7 @@ public class LeanTween : MonoBehaviour {
         }
         // Debug.Log("searching for an empty space for:"+caller + " eventid:"+event);
         for(i = 0; i < INIT_LISTENERS_MAX; i++){
-            int point = eventId*INIT_LISTENERS_MAX + i;
+            var point = eventId*INIT_LISTENERS_MAX + i;
             if(goListeners[ point ]==null || eventListeners[ point ]==null){
                 eventListeners[ point ] = callback;
                 goListeners[ point ] = caller;
@@ -2790,7 +2790,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     public static bool removeListener( int eventId ){
-        int point = eventId*INIT_LISTENERS_MAX + i;
+        var point = eventId*INIT_LISTENERS_MAX + i;
         eventListeners[ point ] = null;
         goListeners[ point ] = null;
         return true;
@@ -2810,7 +2810,7 @@ public class LeanTween : MonoBehaviour {
     */
     public static bool removeListener( GameObject caller, int eventId, System.Action<LTEvent> callback ){
         for(i = 0; i < eventsMaxSearch; i++){
-            int point = eventId*INIT_LISTENERS_MAX + i;
+            var point = eventId*INIT_LISTENERS_MAX + i;
             #if UNITY_FLASH
             if(goListeners[ point ] == caller && System.Object.ReferenceEquals( eventListeners[ point ], callback) ){
             #else
@@ -2848,8 +2848,8 @@ public class LeanTween : MonoBehaviour {
     * }<br />
     */
     public static void dispatchEvent( int eventId, object data ){
-        for(int k = 0; k < eventsMaxSearch; k++){
-            int point = eventId*INIT_LISTENERS_MAX + k;
+        for(var k = 0; k < eventsMaxSearch; k++){
+            var point = eventId*INIT_LISTENERS_MAX + k;
             if(eventListeners[ point ]!=null){
                 if(goListeners[point]){
                     eventListeners[ point ]( new LTEvent(eventId, data) );
@@ -2866,12 +2866,12 @@ public class LeanTween : MonoBehaviour {
 public class LTUtility {
 
     public static Vector3[] reverse( Vector3[] arr ){
-        int length = arr.Length;
-        int left = 0;
-        int right = length - 1;
+        var length = arr.Length;
+        var left = 0;
+        var right = length - 1;
 
         for (; left < right; left += 1, right -= 1){
-            Vector3 temporary = arr[left];
+            var temporary = arr[left];
             arr[left] = arr[right];
             arr[right] = temporary;
         }
@@ -2899,10 +2899,10 @@ public class LTBezier {
         arcLengths = new float[(int)this.len + (int)1];
         arcLengths[0] = 0;
 
-        Vector3 ov = a;
+        var ov = a;
         Vector3 v;
-        float clen = 0.0f;
-        for(int i = 1; i <= this.len; i++) {
+        var clen = 0.0f;
+        for(var i = 1; i <= this.len; i++) {
             v = bezierPoint(i * precision);
             clen += (ov - v).magnitude;
             this.arcLengths[i] = clen;
@@ -2912,10 +2912,10 @@ public class LTBezier {
     }
 
     private float map(float u) {
-        float targetLength = u * this.arcLengths[(int)this.len];
-        int low = 0;
-        int high = (int)this.len;
-        int index = 0;
+        var targetLength = u * this.arcLengths[(int)this.len];
+        var low = 0;
+        var high = (int)this.len;
+        var index = 0;
         while (low < high) {
             index = low + ((int)((high - low) / 2.0f) | 0);
             if (this.arcLengths[index] < targetLength) {
@@ -2976,7 +2976,7 @@ public class LTBezierPath {
 
         pts = pts_;
 
-        int k = 0;
+        var k = 0;
         beziers = new LTBezier[ pts.Length / 4 ];
         lengthRatio = new float[ beziers.Length ];
         int i;
@@ -3011,8 +3011,8 @@ public class LTBezierPath {
     * transform.position = ltPath.point( 0.6f );
     */
     public Vector3 point( float ratio ){
-        float added = 0.0f;
-        for(int i = 0; i < lengthRatio.Length; i++){
+        var added = 0.0f;
+        for(var i = 0; i < lengthRatio.Length; i++){
             added += lengthRatio[i];
             if(added >= ratio)
                 return beziers[i].point( (ratio-(added-lengthRatio[i])) / lengthRatio[i] );
@@ -3024,8 +3024,8 @@ public class LTBezierPath {
         transform.position = point( ratio );
         ratio += 0.001f;
         if(ratio<=1.0f){
-            Vector3 v3Dir = point( ratio ) - transform.position;
-            float angle = Mathf.Atan2(v3Dir.y, v3Dir.x) * Mathf.Rad2Deg;
+            var v3Dir = point( ratio ) - transform.position;
+            var angle = Mathf.Atan2(v3Dir.y, v3Dir.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, 0, angle);
         }
     }
@@ -3034,8 +3034,8 @@ public class LTBezierPath {
         transform.localPosition = point( ratio );
         ratio += 0.001f;
         if(ratio<=1.0f){
-            Vector3 v3Dir = point( ratio ) - transform.localPosition;
-            float angle = Mathf.Atan2(v3Dir.y, v3Dir.x) * Mathf.Rad2Deg;
+            var v3Dir = point( ratio ) - transform.localPosition;
+            var angle = Mathf.Atan2(v3Dir.y, v3Dir.x) * Mathf.Rad2Deg;
             transform.localEulerAngles = new Vector3(0, 0, angle);
         }
     }
@@ -3108,12 +3108,12 @@ public class LTBezierPath {
 
     public void gizmoDraw(float t = -1.0f)
     {
-        Vector3 prevPt = point(0);
+        var prevPt = point(0);
 
-        for (int i = 1; i <= 120; i++)
+        for (var i = 1; i <= 120; i++)
         {
-            float pm = (float)i / 120f;
-            Vector3 currPt2 = point(pm);
+            var pm = (float)i / 120f;
+            var currPt2 = point(pm);
             //Gizmos.color = new Color(UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),1);
             Gizmos.color = (previousBezier == currentBezier) ? Color.magenta : Color.grey;
             Gizmos.DrawLine(currPt2, prevPt);
@@ -3133,13 +3133,13 @@ public class LTBezierPath {
     */
     public float ratioAtPoint(Vector3 pt, float precision = 0.01f)
     {
-        float closestDist = float.MaxValue;
-        int closestI = 0;
-        int maxIndex = Mathf.RoundToInt(1f / precision);
-        for (int i = 0; i < maxIndex; i++)
+        var closestDist = float.MaxValue;
+        var closestI = 0;
+        var maxIndex = Mathf.RoundToInt(1f / precision);
+        for (var i = 0; i < maxIndex; i++)
         {
-            float ratio = (float)i / (float)maxIndex;
-            float dist = Vector3.Distance(pt, point( ratio ) );
+            var ratio = (float)i / (float)maxIndex;
+            var dist = Vector3.Distance(pt, point( ratio ) );
             // Debug.Log("i:"+i+" dist:"+dist);
             if (dist < closestDist)
             {
@@ -3204,12 +3204,12 @@ public class LTSpline {
 
         numSections = pts.Length - 3;
 
-        float minSegment = float.PositiveInfinity;
-        Vector3 earlierPoint = this.pts[1];
-        float totalDistance = 0f;
-        for(int i=1; i < this.pts.Length-1; i++){
+        var minSegment = float.PositiveInfinity;
+        var earlierPoint = this.pts[1];
+        var totalDistance = 0f;
+        for(var i=1; i < this.pts.Length-1; i++){
             // float pointDistance = (this.pts[i]-earlierPoint).sqrMagnitude;
-            float pointDistance = Vector3.Distance(this.pts[i], earlierPoint);
+            var pointDistance = Vector3.Distance(this.pts[i], earlierPoint);
             //Debug.Log("pointDist:"+pointDistance);
             if(pointDistance < minSegment){
                 minSegment = pointDistance;
@@ -3222,22 +3222,22 @@ public class LTSpline {
             minSegment = totalDistance / (numSections*SUBLINE_COUNT);
             //Debug.Log("minSegment:"+minSegment+" numSections:"+numSections);
 
-            float minPrecision = minSegment / SUBLINE_COUNT; // number of subdivisions in each segment
-            int precision = (int)Mathf.Ceil(totalDistance / minPrecision) * DISTANCE_COUNT;
+            var minPrecision = minSegment / SUBLINE_COUNT; // number of subdivisions in each segment
+            var precision = (int)Mathf.Ceil(totalDistance / minPrecision) * DISTANCE_COUNT;
             // Debug.Log("precision:"+precision);
             if(precision<=1) // precision has to be greater than one
                 precision = 2;
 
             ptsAdj = new Vector3[ precision ];
             earlierPoint = interp( 0f );
-            int num = 1;
+            var num = 1;
             ptsAdj[0] = earlierPoint;
             distance = 0f;
-            for(int i = 0; i < precision + 1; i++){
-                float fract = ((float)(i)) / precision;
+            for(var i = 0; i < precision + 1; i++){
+                var fract = ((float)(i)) / precision;
                 // Debug.Log("fract:"+fract);
-                Vector3 point = interp( fract );
-                float dist = Vector3.Distance(point, earlierPoint);
+                var point = interp( fract );
+                var dist = Vector3.Distance(point, earlierPoint);
 
                 // float dist = (point-earlierPoint).sqrMagnitude;
                 if(dist>=minPrecision || fract>=1.0f){
@@ -3265,18 +3265,18 @@ public class LTSpline {
     public Vector3 map( float u ){
         if(u>=1f)
             return pts[ pts.Length - 2];
-        float t = u * (ptsAdjLength-1);
-        int first = (int)Mathf.Floor( t );
-        int next = (int)Mathf.Ceil( t );
+        var t = u * (ptsAdjLength-1);
+        var first = (int)Mathf.Floor( t );
+        var next = (int)Mathf.Ceil( t );
 
         if(first<0)
             first = 0;
 
-        Vector3 val = ptsAdj[ first ];
+        var val = ptsAdj[ first ];
 
 
-        Vector3 nextVal = ptsAdj[ next ];
-        float diff = t - first;
+        var nextVal = ptsAdj[ next ];
+        var diff = t - first;
 
         // Debug.Log("u:"+u+" val:"+val +" nextVal:"+nextVal+" diff:"+diff+" first:"+first+" next:"+next);
 
@@ -3287,15 +3287,15 @@ public class LTSpline {
 
     public Vector3 interp(float t) {
         currPt = Mathf.Min(Mathf.FloorToInt(t * (float) numSections), numSections - 1);
-        float u = t * (float) numSections - (float) currPt;
+        var u = t * (float) numSections - (float) currPt;
 
         //Debug.Log("currPt:"+currPt+" numSections:"+numSections+" pts.Length :"+pts.Length );
-        Vector3 a = pts[currPt];
-        Vector3 b = pts[currPt + 1];
-        Vector3 c = pts[currPt + 2];
-        Vector3 d = pts[currPt + 3];
+        var a = pts[currPt];
+        var b = pts[currPt + 1];
+        var c = pts[currPt + 2];
+        var d = pts[currPt + 3];
 
-        Vector3 val = (.5f * (
+        var val = (.5f * (
             (-a + 3f * b - 3f * c + d) * (u * u * u)
             + (2f * a - 5f * b + 4f * c - d) * (u * u)
             + (-a + c) * u
@@ -3315,10 +3315,10 @@ public class LTSpline {
     * ratioIter = ltSpline.ratioAtPoint( transform.position );
     */
     public float ratioAtPoint( Vector3 pt ){
-        float closestDist = float.MaxValue;
-        int closestI = 0;
-        for (int i = 0; i < ptsAdjLength; i++) {
-            float dist = Vector3.Distance(pt, ptsAdj[i]);
+        var closestDist = float.MaxValue;
+        var closestI = 0;
+        for (var i = 0; i < ptsAdjLength; i++) {
+            var dist = Vector3.Distance(pt, ptsAdj[i]);
             // Debug.Log("i:"+i+" dist:"+dist);
             if(dist<closestDist){
                 closestDist = dist;
@@ -3339,7 +3339,7 @@ public class LTSpline {
     * transform.position = ltSpline.point( 0.6f );
     */
     public Vector3 point( float ratio ){
-        float t = ratio>1f?1f:ratio;
+        var t = ratio>1f?1f:ratio;
         return constantSpeed ? map(t) : interp(t);
     }
 
@@ -3347,14 +3347,14 @@ public class LTSpline {
         transform.position = point( ratio );
         ratio += 0.001f;
         if(ratio<=1.0f){
-            Vector3 v3Dir = point( ratio ) - transform.position;
-            float angle = Mathf.Atan2(v3Dir.y, v3Dir.x) * Mathf.Rad2Deg;
+            var v3Dir = point( ratio ) - transform.position;
+            var angle = Mathf.Atan2(v3Dir.y, v3Dir.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, 0, angle);
         }
     }
 
     public void placeLocal2d( Transform transform, float ratio ){
-        Transform trans = transform.parent;
+        var trans = transform.parent;
         if(trans==null){ // this has no parent, just do a regular transform
             place2d(transform, ratio);
             return;
@@ -3362,9 +3362,9 @@ public class LTSpline {
         transform.localPosition = point( ratio );
         ratio += 0.001f;
         if(ratio<=1.0f){
-            Vector3 ptAhead = point( ratio );//trans.TransformPoint(  );
-            Vector3 v3Dir =  ptAhead - transform.localPosition;
-            float angle = Mathf.Atan2(v3Dir.y, v3Dir.x) * Mathf.Rad2Deg;
+            var ptAhead = point( ratio );//trans.TransformPoint(  );
+            var v3Dir =  ptAhead - transform.localPosition;
+            var angle = Mathf.Atan2(v3Dir.y, v3Dir.x) * Mathf.Rad2Deg;
             transform.localEulerAngles = new Vector3(0, 0, angle);
         }
     }
@@ -3436,10 +3436,10 @@ public class LTSpline {
         if(ptsAdj==null || ptsAdj.Length<=0)
             return;
 
-        Vector3 prevPt = ptsAdj[0];
+        var prevPt = ptsAdj[0];
 
-        for (int i = 0; i < ptsAdjLength; i++) {
-            Vector3 currPt2 = ptsAdj[i];
+        for (var i = 0; i < ptsAdjLength; i++) {
+            var currPt2 = ptsAdj[i];
             // Debug.Log("currPt2:"+currPt2);
             //Gizmos.color = new Color(UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),1);
             Gizmos.DrawLine(prevPt, currPt2);
@@ -3450,12 +3450,12 @@ public class LTSpline {
     public void drawGizmo( Color color ) {
         if( this.ptsAdjLength>=4){
 
-            Vector3 prevPt = this.ptsAdj[0];
+            var prevPt = this.ptsAdj[0];
 
-            Color colorBefore = Gizmos.color;
+            var colorBefore = Gizmos.color;
             Gizmos.color = color;
-            for (int i = 0; i < this.ptsAdjLength; i++) {
-                Vector3 currPt2 = this.ptsAdj[i];
+            for (var i = 0; i < this.ptsAdjLength; i++) {
+                var currPt2 = this.ptsAdj[i];
                 // Debug.Log("currPt2:"+currPt2);
 
                 Gizmos.DrawLine(prevPt, currPt2);
@@ -3467,17 +3467,17 @@ public class LTSpline {
 
     public static void drawGizmo(Transform[] arr, Color color) {
         if(arr.Length>=4){
-            Vector3[] vec3s = new Vector3[arr.Length];
-            for(int i = 0; i < arr.Length; i++){
+            var vec3s = new Vector3[arr.Length];
+            for(var i = 0; i < arr.Length; i++){
                 vec3s[i] = arr[i].position;
             }
-            LTSpline spline = new LTSpline(vec3s);
-            Vector3 prevPt = spline.ptsAdj[0];
+            var spline = new LTSpline(vec3s);
+            var prevPt = spline.ptsAdj[0];
 
-            Color colorBefore = Gizmos.color;
+            var colorBefore = Gizmos.color;
             Gizmos.color = color;
-            for (int i = 0; i < spline.ptsAdjLength; i++) {
-                Vector3 currPt2 = spline.ptsAdj[i];
+            for (var i = 0; i < spline.ptsAdjLength; i++) {
+                var currPt2 = spline.ptsAdj[i];
                 // Debug.Log("currPt2:"+currPt2);
 
                 Gizmos.DrawLine(prevPt, currPt2);
@@ -3521,10 +3521,10 @@ public class LTSpline {
         if (constantSpeed) {
             if (this.ptsAdjLength >= 4) {
 
-                Vector3 prevPt = this.ptsAdj[0];
+                var prevPt = this.ptsAdj[0];
 
-                for (int i = 0; i < this.ptsAdjLength; i++) {
-                    Vector3 currPt2 = this.ptsAdj[i];
+                for (var i = 0; i < this.ptsAdjLength; i++) {
+                    var currPt2 = this.ptsAdj[i];
                     GL.Vertex(prevPt);
                     GL.Vertex(currPt2);
 
@@ -3535,14 +3535,14 @@ public class LTSpline {
         } else {
             if (this.pts.Length >= 4) {
 
-                Vector3 prevPt = this.pts[0];
+                var prevPt = this.pts[0];
 
-                float split = 1f / ((float)this.pts.Length * 10f);
+                var split = 1f / ((float)this.pts.Length * 10f);
 
-                float iter = 0f;
+                var iter = 0f;
                 while (iter < 1f) {
-                    float at = iter / 1f;
-                    Vector3 currPt2 = interp(at);
+                    var at = iter / 1f;
+                    var currPt2 = interp(at);
                     // Debug.Log("currPt2:"+currPt2);
 
                     GL.Vertex(prevPt);
@@ -3563,16 +3563,16 @@ public class LTSpline {
 
     public Vector3[] generateVectors(){
         if (this.pts.Length >= 4) {
-            List<Vector3> meshPoints = new List<Vector3>();
-            Vector3 prevPt = this.pts[0];
+            var meshPoints = new List<Vector3>();
+            var prevPt = this.pts[0];
             meshPoints.Add(prevPt);
 
-            float split = 1f / ((float)this.pts.Length * 10f);
+            var split = 1f / ((float)this.pts.Length * 10f);
 
-            float iter = 0f;
+            var iter = 0f;
             while (iter < 1f) {
-                float at = iter / 1f;
-                Vector3 currPt2 = interp(at);
+                var at = iter / 1f;
+                var currPt2 = interp(at);
                 //                Debug.Log("currPt2:"+currPt2);
 
                 //                GL.Vertex(prevPt);
@@ -3695,7 +3695,7 @@ public class LTRect : System.Object{
 
     public int id{
         get{ 
-            int toId = _id | counter << 16;
+            var toId = _id | counter << 16;
 
             /*uint backId = toId & 0xFFFF;
             uint backCounter = toId >> 16;
@@ -3722,7 +3722,7 @@ public class LTRect : System.Object{
     }
 
     public void resetForRotation(){
-        Vector3 scale = new Vector3(GUI.matrix[0,0], GUI.matrix[1,1], GUI.matrix[2,2]);
+        var scale = new Vector3(GUI.matrix[0,0], GUI.matrix[1,1], GUI.matrix[2,2]);
         if(pivot==Vector2.zero){
             pivot = new Vector2((_rect.x+((_rect.width)*0.5f )) * scale.x + GUI.matrix[0,3], (_rect.y+((_rect.height)*0.5f )) * scale.y + GUI.matrix[1,3]);
         }
@@ -3880,7 +3880,7 @@ public class LTGUI {
             buttons = new Rect[BUTTONS_MAX];
             buttonLevels = new int[BUTTONS_MAX];
             buttonLastFrame = new int[BUTTONS_MAX];
-            for(int i = 0; i < buttonLevels.Length; i++){
+            for(var i = 0; i < buttonLevels.Length; i++){
                 buttonLevels[i] = -1;
             }
         }
@@ -3889,11 +3889,11 @@ public class LTGUI {
     public static void reset(){
         if(isGUIEnabled){
             isGUIEnabled = false;
-            for(int i = 0; i < levels.Length; i++){
+            for(var i = 0; i < levels.Length; i++){
                 levels[i] = null;
             }
 
-            for(int i = 0; i < levelDepths.Length; i++){
+            for(var i = 0; i < levelDepths.Length; i++){
                 levelDepths[i] = 0;
             }
         }
@@ -3904,10 +3904,10 @@ public class LTGUI {
             init();
             if(levelDepths[updateLevel]>0){
                 color = GUI.color;
-                int baseI = updateLevel*RECTS_PER_LEVEL;
-                int maxLoop = baseI + levelDepths[updateLevel];// RECTS_PER_LEVEL;//;
+                var baseI = updateLevel*RECTS_PER_LEVEL;
+                var maxLoop = baseI + levelDepths[updateLevel];// RECTS_PER_LEVEL;//;
 
-                for(int i = baseI; i < maxLoop; i++){
+                for(var i = baseI; i < maxLoop; i++){
                     r = levels[i];
                     // Debug.Log("r:"+r+" i:"+i);
                     if(r!=null /*&& checkOnScreen(r.rect)*/){
@@ -3923,7 +3923,7 @@ public class LTGUI {
                                 GUI.Label( new Rect(r.rect.x + r.margin.x, r.rect.y + r.margin.y, r.rect.width, r.rect.height), r.labelStr );
                             }
                         }else if(r.type == Element_Type.Texture && r.texture!=null){
-                            Vector2 size = r.useSimpleScale ? new Vector2(0f, r.rect.height*r.relativeRect.height) : new Vector2(r.rect.width, r.rect.height);
+                            var size = r.useSimpleScale ? new Vector2(0f, r.rect.height*r.relativeRect.height) : new Vector2(r.rect.width, r.rect.height);
                             if(r.sizeByHeight){
                                 size.x = (float)r.texture.width/(float)r.texture.height * size.y;
                             }
@@ -3941,24 +3941,24 @@ public class LTGUI {
     }
 
     public static bool checkOnScreen(Rect rect){
-        bool offLeft = rect.x + rect.width < 0f;
-        bool offRight = rect.x > Screen.width;
-        bool offBottom = rect.y > Screen.height;
-        bool offTop = rect.y + rect.height < 0f;
+        var offLeft = rect.x + rect.width < 0f;
+        var offRight = rect.x > Screen.width;
+        var offBottom = rect.y > Screen.height;
+        var offTop = rect.y + rect.height < 0f;
 
         return !(offLeft || offRight || offBottom || offTop);
     }
 
     public static void destroy( int id ){
-        int backId = id & 0xFFFF;
-        int backCounter = id >> 16;
+        var backId = id & 0xFFFF;
+        var backCounter = id >> 16;
         if(id>=0 && levels[backId]!=null && levels[backId].hasInitiliazed && levels[backId].counter==backCounter)
             levels[backId] = null;
     }
 
     public static void destroyAll( int depth ){ // clears all gui elements on depth
-        int maxLoop = depth*RECTS_PER_LEVEL + RECTS_PER_LEVEL;
-        for(int i = depth*RECTS_PER_LEVEL; levels!=null && i < maxLoop; i++){
+        var maxLoop = depth*RECTS_PER_LEVEL + RECTS_PER_LEVEL;
+        for(var i = depth*RECTS_PER_LEVEL; levels!=null && i < maxLoop; i++){
             levels[i] = null;
         }
     }
@@ -3986,8 +3986,8 @@ public class LTGUI {
     public static LTRect element( LTRect rect, int depth){
         isGUIEnabled = true;
         init();
-        int maxLoop = depth*RECTS_PER_LEVEL + RECTS_PER_LEVEL;
-        int k = 0;
+        var maxLoop = depth*RECTS_PER_LEVEL + RECTS_PER_LEVEL;
+        var k = 0;
         if(rect!=null){
             destroy(rect.id);
         }
@@ -3999,7 +3999,7 @@ public class LTGUI {
         if(rect.relativeRect.width==float.PositiveInfinity){
             rect.relativeRect = new Rect(0f,0f,Screen.width,Screen.height);
         }
-        for(int i = depth*RECTS_PER_LEVEL; i < maxLoop; i++){
+        for(var i = depth*RECTS_PER_LEVEL; i < maxLoop; i++){
             r = levels[i];
             if(r==null){
                 r = rect;
@@ -4024,9 +4024,9 @@ public class LTGUI {
 
     public static bool hasNoOverlap( Rect rect, int depth ){
         initRectCheck();
-        bool hasNoOverlap = true;
-        bool wasAddedToList = false;
-        for(int i = 0; i < buttonLevels.Length; i++){
+        var hasNoOverlap = true;
+        var wasAddedToList = false;
+        for(var i = 0; i < buttonLevels.Length; i++){
             // Debug.Log("buttonLastFrame["+i+"]:"+buttonLastFrame[i]);
             //Debug.Log("buttonLevels["+i+"]:"+buttonLevels[i]);
             if(buttonLevels[i]>=0){
@@ -4062,10 +4062,10 @@ public class LTGUI {
     }
 
     public static bool pressedWithinRect( Rect rect ){
-        Vector2 vec2 = firstTouch();
+        var vec2 = firstTouch();
         if(vec2.x<0f)
             return false;
-        float vecY = Screen.height-vec2.y;
+        var vecY = Screen.height-vec2.y;
         return (vec2.x > rect.x && vec2.x < rect.x + rect.width && vecY > rect.y && vecY < rect.y + rect.height);
     }
 

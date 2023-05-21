@@ -10,7 +10,7 @@ public class LeanTester : MonoBehaviour {
 	}
 
 	IEnumerator timeoutCheck(){
-		float pauseEndTime = Time.realtimeSinceStartup + timeout;
+		var pauseEndTime = Time.realtimeSinceStartup + timeout;
 	    while (Time.realtimeSinceStartup < pauseEndTime)
 	    {
 	        yield return 0;
@@ -37,14 +37,14 @@ public class LeanTest : object {
 	}
 
 	public static void expect( bool didPass, string definition, string failExplaination = null){
-		float len = printOutLength(definition);
-		int paddingLen = 40-(int)(len*1.05f);
+		var len = printOutLength(definition);
+		var paddingLen = 40-(int)(len*1.05f);
 		#if UNITY_FLASH
 		string padding = padRight(paddingLen);
 		#else
-		string padding = "".PadRight(paddingLen,"_"[0]);
+		var padding = "".PadRight(paddingLen,"_"[0]);
 		#endif
-		string logName = formatB(definition) +" " + padding + " [ "+ (didPass ? formatC("pass","green") : formatC("fail","red")) +" ]";
+		var logName = formatB(definition) +" " + padding + " [ "+ (didPass ? formatC("pass","green") : formatC("fail","red")) +" ]";
 		if(didPass==false && failExplaination!=null)
 			logName += " - " + failExplaination;
 		Debug.Log(logName);
@@ -61,9 +61,9 @@ public class LeanTest : object {
 
 		if(timeoutStarted==false){
 			timeoutStarted = true;
-			GameObject tester = new GameObject();
+			var tester = new GameObject();
 			tester.name = "~LeanTest";
-			LeanTester test = tester.AddComponent(typeof(LeanTester)) as LeanTester;
+			var test = tester.AddComponent(typeof(LeanTester)) as LeanTester;
 			test.timeout = timeout;
 			#if !UNITY_EDITOR
 			tester.hideFlags = HideFlags.HideAndDontSave;
@@ -72,16 +72,16 @@ public class LeanTest : object {
 	}
 	
 	public static string padRight(int len){
-		string str = "";
-		for(int i = 0; i < len; i++){
+		var str = "";
+		for(var i = 0; i < len; i++){
 			str += "_";
 		}
 		return str;
 	}
 	
 	public static float printOutLength( string str ){
-		float len = 0.0f;
-		for(int i = 0; i < str.Length; i++){
+		var len = 0.0f;
+		for(var i = 0; i < str.Length; i++){
 			if(str[i]=="I"[0]){
 				len += 0.5f;
 			}else if(str[i]=="J"[0]){
@@ -115,8 +115,8 @@ public class LeanTest : object {
 	
 	public static void overview(){ 
 		testsFinished = true;
-		int failedCnt = (expected-passes);
-		string failedStr = failedCnt > 0 ? formatBC(""+failedCnt,"red") : ""+failedCnt;
+		var failedCnt = (expected-passes);
+		var failedStr = failedCnt > 0 ? formatBC(""+failedCnt,"red") : ""+failedCnt;
 		Debug.Log(formatB("Final Report:")+" _____________________ PASSED: "+formatBC(""+passes,"green")+" FAILED: "+failedStr+" ");
 	}
 }

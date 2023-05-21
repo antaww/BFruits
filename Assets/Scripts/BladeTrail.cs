@@ -44,7 +44,7 @@ public class BladeTrail : MonoBehaviour
 
     private void StartSlice()
     {
-        Vector3 position = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        var position = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         position.z = 0f;
         transform.position = position;
 
@@ -63,12 +63,12 @@ public class BladeTrail : MonoBehaviour
 
     private void ContinueSlice()
     {
-        Vector3 newPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        var newPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         newPosition.z = 0f;
 
         Direction = newPosition - transform.position;
 
-        float velocity = Direction.magnitude / Time.deltaTime;
+        var velocity = Direction.magnitude / Time.deltaTime;
         _sliceCollider.enabled = velocity > minSliceVelocity;
 
         transform.position = newPosition;

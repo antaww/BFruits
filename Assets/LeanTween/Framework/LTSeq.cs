@@ -41,7 +41,7 @@ public class LTSeq {
 
 	public int id{
 		get{ 
-			uint toId = _id | counter << 16;
+			var toId = _id | counter << 16;
 
 			/*uint backId = toId & 0xFFFF;
 			uint backCounter = toId >> 16;
@@ -70,7 +70,7 @@ public class LTSeq {
 
 	private LTSeq addOn(){
 		this.current.toggle = true;
-		LTSeq lastCurrent = this.current;
+		var lastCurrent = this.current;
 		this.current = LeanTween.sequence(true);
 		// Debug.Log("this.current:" + this.current.id + " lastCurrent:" + lastCurrent.id);
 		this.current.previous = lastCurrent;
@@ -83,7 +83,7 @@ public class LTSeq {
 	private float addPreviousDelays(){
 //		Debug.Log("delay:"+delay+" count:"+this.current.count+" this.current.totalDelay:"+this.current.totalDelay);
 
-		LTSeq prev = this.current.previous;
+		var prev = this.current.previous;
 
 		if (prev != null && prev.tween!=null) {
             return this.current.totalDelay + prev.tween.time;
@@ -122,7 +122,7 @@ public class LTSeq {
 	* });;<br>
 	*/
 	public LTSeq append( System.Action callback ){
-		LTDescr newTween = LeanTween.delayedCall(0f, callback);
+		var newTween = LeanTween.delayedCall(0f, callback);
 //		Debug.Log("newTween:" + newTween);
 		return append(newTween);
 	}

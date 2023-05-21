@@ -14,7 +14,7 @@ public class LeanAudioStream {
 	}
 
 	public void OnAudioRead(float[] data) {
-        int count = 0;
+        var count = 0;
         while (count < data.Length) {
             data[count] = audioArr[this.position];
             position++;
@@ -56,7 +56,7 @@ public class LeanAudio : object {
 
 		options.useSetData = false;
 
-		int generatedWavePtsLength = createAudioWave( volume, frequency, options);
+		var generatedWavePtsLength = createAudioWave( volume, frequency, options);
 		createAudioFromWave( generatedWavePtsLength, options );
 
 		return options.stream;
@@ -79,28 +79,28 @@ public class LeanAudio : object {
 		if(options==null)
 			options = new LeanAudioOptions();
 		
-		int generatedWavePtsLength = createAudioWave( volume, frequency, options);
+		var generatedWavePtsLength = createAudioWave( volume, frequency, options);
 		// Debug.Log("generatedWavePtsLength:"+generatedWavePtsLength);
 		return createAudioFromWave( generatedWavePtsLength, options );
 	}
 
 	private static int createAudioWave( AnimationCurve volume, AnimationCurve frequency, LeanAudioOptions options ){
-		float time = volume[ volume.length - 1 ].time;
-		int listLength = 0;
+		var time = volume[ volume.length - 1 ].time;
+		var listLength = 0;
 		// List<float> list = new List<float>();
 
 		// generatedWaveDistances = new List<float>();
 		// float[] vibratoValues = new float[ vibrato.Length ];
-		float passed = 0f;
-		for(int i = 0; i < PROCESSING_ITERATIONS_MAX; i++){
-			float f = frequency.Evaluate(passed);
+		var passed = 0f;
+		for(var i = 0; i < PROCESSING_ITERATIONS_MAX; i++){
+			var f = frequency.Evaluate(passed);
 			if(f<MIN_FREQEUNCY_PERIOD)
 				f = MIN_FREQEUNCY_PERIOD;
-			float height = volume.Evaluate(passed + 0.5f*f);
+			var height = volume.Evaluate(passed + 0.5f*f);
 			if(options.vibrato!=null){
-				for(int j=0; j<options.vibrato.Length; j++){
-					float peakMulti = Mathf.Abs( Mathf.Sin( 1.5708f + passed * (1f/options.vibrato[j][0]) * Mathf.PI ) );
-					float diff = (1f-options.vibrato[j][1]);
+				for(var j=0; j<options.vibrato.Length; j++){
+					var peakMulti = Mathf.Abs( Mathf.Sin( 1.5708f + passed * (1f/options.vibrato[j][0]) * Mathf.PI ) );
+					var diff = (1f-options.vibrato[j][1]);
 					peakMulti = options.vibrato[j][1] + diff*peakMulti;
 					height *= peakMulti;
 				}	
@@ -114,7 +114,7 @@ public class LeanAudio : object {
 				Debug.LogError("LeanAudio has reached it's processing cap. To avoid this error increase the number of iterations ex: LeanAudio.PROCESSING_ITERATIONS_MAX = "+(PROCESSING_ITERATIONS_MAX*2));
 				break;
 			}else{
-				int distPoint = listLength / 2;
+				var distPoint = listLength / 2;
 				
 				//generatedWaveDistances.Add( f );
 				passed += f;
@@ -146,16 +146,16 @@ public class LeanAudio : object {
 	}
 
 	private static AudioClip createAudioFromWave( int waveLength, LeanAudioOptions options ){
-		float time = longList[ waveLength - 2 ];
-		float[] audioArr = new float[ (int)(options.frequencyRate*time) ];
+		var time = longList[ waveLength - 2 ];
+		var audioArr = new float[ (int)(options.frequencyRate*time) ];
 
-		int waveIter = 0;
-		float subWaveDiff = longList[waveIter];
-		float subWaveTimeLast = 0f;
-		float subWaveTime = longList[waveIter];
-		float waveHeight = longList[waveIter+1];
-		for(int i = 0; i < audioArr.Length; i++){
-			float passedTime = (float)i / (float)options.frequencyRate;
+		var waveIter = 0;
+		var subWaveDiff = longList[waveIter];
+		var subWaveTimeLast = 0f;
+		var subWaveTime = longList[waveIter];
+		var waveHeight = longList[waveIter+1];
+		for(var i = 0; i < audioArr.Length; i++){
+			var passedTime = (float)i / (float)options.frequencyRate;
 			if(passedTime > longList[waveIter] ){
 				subWaveTimeLast = longList[waveIter];
 				waveIter += 2;
@@ -164,9 +164,9 @@ public class LeanAudio : object {
 				// Debug.Log("passed wave i:"+i);
 			}
 			subWaveTime = passedTime - subWaveTimeLast;
-			float ratioElapsed = subWaveTime / subWaveDiff;
+			var ratioElapsed = subWaveTime / subWaveDiff;
 
-			float value = Mathf.Sin( ratioElapsed * Mathf.PI );
+			var value = Mathf.Sin( ratioElapsed * Mathf.PI );
 
 			if(options.waveStyle==LeanAudioOptions.LeanAudioWaveStyle.Square){
 				if(value>0f)
@@ -174,14 +174,14 @@ public class LeanAudio : object {
 				if(value<0f)
 					value = -1f;
 			}else if(options.waveStyle==LeanAudioOptions.LeanAudioWaveStyle.Sawtooth){
-				float sign = value > 0f ? 1f : -1f;
+				var sign = value > 0f ? 1f : -1f;
 				if(ratioElapsed<0.5f){
 					value = (ratioElapsed*2f)*sign;
 				}else{ // 0.5f - 1f
 					value = (1f - ratioElapsed)*2f*sign;
 				}
 			}else if(options.waveStyle==LeanAudioOptions.LeanAudioWaveStyle.Noise){
-				float peakMulti = (1f-options.waveNoiseInfluence) + Mathf.PerlinNoise(0f, passedTime * options.waveNoiseScale ) * options.waveNoiseInfluence;
+				var peakMulti = (1f-options.waveNoiseInfluence) + Mathf.PerlinNoise(0f, passedTime * options.waveNoiseScale ) * options.waveNoiseInfluence;
 				
 				/*if(i<25){
 					Debug.Log("passedTime:"+passedTime+" peakMulti:"+peakMulti+" infl:"+options.waveNoiseInfluence);
@@ -197,9 +197,9 @@ public class LeanAudio : object {
 
 
 			if(options.modulation!=null){
-				for(int k=0; k<options.modulation.Length; k++){
-					float peakMulti = Mathf.Abs( Mathf.Sin( 1.5708f + passedTime * (1f/options.modulation[k][0]) * Mathf.PI ) );
-					float diff = (1f-options.modulation[k][1]);
+				for(var k=0; k<options.modulation.Length; k++){
+					var peakMulti = Mathf.Abs( Mathf.Sin( 1.5708f + passedTime * (1f/options.modulation[k][0]) * Mathf.PI ) );
+					var diff = (1f-options.modulation[k][1]);
 					peakMulti = options.modulation[k][1] + diff*peakMulti;
 					// if(k<10){
 						// Debug.Log("k:"+k+" peakMulti:"+peakMulti+" value:"+value+" after:"+(value*peakMulti));
@@ -213,7 +213,7 @@ public class LeanAudio : object {
 		}
 
 		
-		int lengthSamples = audioArr.Length;
+		var lengthSamples = audioArr.Length;
 		
 		#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
 		bool is3dSound = false;
@@ -240,23 +240,23 @@ public class LeanAudio : object {
     }
 
 	public static AudioClip generateAudioFromCurve( AnimationCurve curve, int frequencyRate = 44100 ){
-		float curveTime = curve[ curve.length - 1 ].time;
-		float time = curveTime;
-		float[] audioArr = new float[ (int)(frequencyRate*time) ];
+		var curveTime = curve[ curve.length - 1 ].time;
+		var time = curveTime;
+		var audioArr = new float[ (int)(frequencyRate*time) ];
 
 		// Debug.Log("curveTime:"+curveTime+" AudioSettings.outputSampleRate:"+AudioSettings.outputSampleRate);
-		for(int i = 0; i < audioArr.Length; i++){
-			float pt = (float)i / (float)frequencyRate;
+		for(var i = 0; i < audioArr.Length; i++){
+			var pt = (float)i / (float)frequencyRate;
 			audioArr[i] = curve.Evaluate( pt );
 			// Debug.Log("pt:"+pt+" i:"+i+" val:"+audioArr[i]+" len:"+audioArr.Length);
 		}
 
-		int lengthSamples = audioArr.Length;//(int)( (float)frequencyRate * curveTime );
+		var lengthSamples = audioArr.Length;//(int)( (float)frequencyRate * curveTime );
 		#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
 		bool is3dSound = false;
 		AudioClip audioClip = AudioClip.Create("Generated Audio", lengthSamples, 1, frequencyRate, is3dSound, false);
 		#else
-		AudioClip audioClip = AudioClip.Create("Generated Audio", lengthSamples, 1, frequencyRate, false);
+		var audioClip = AudioClip.Create("Generated Audio", lengthSamples, 1, frequencyRate, false);
 		#endif
 		audioClip.SetData(audioArr, 0);
 
@@ -264,7 +264,7 @@ public class LeanAudio : object {
 	}
 
 	public static AudioSource play( AudioClip audio, float volume ){
-		AudioSource audioSource = playClipAt(audio, Vector3.zero);
+		var audioSource = playClipAt(audio, Vector3.zero);
 		audioSource.volume = volume;
 		return audioSource; 
 	}
@@ -279,7 +279,7 @@ public class LeanAudio : object {
 
 	public static AudioSource play( AudioClip audio, Vector3 pos, float volume ){
 		// Debug.Log("audio length:"+audio.length);
-		AudioSource audioSource = playClipAt(audio, pos);
+		var audioSource = playClipAt(audio, pos);
 		audioSource.minDistance = 1f;
 		//audioSource.pitch = pitch;
 		audioSource.volume = volume;
@@ -288,9 +288,9 @@ public class LeanAudio : object {
 	}
 
 	public static AudioSource playClipAt( AudioClip clip, Vector3 pos ) {
-		GameObject tempGO = new GameObject(); // create the temp object
+		var tempGO = new GameObject(); // create the temp object
 		tempGO.transform.position = pos; // set its position
-		AudioSource aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
+		var aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
 		aSource.clip = clip; // define the clip
 		aSource.Play(); // start the sound
 		GameObject.Destroy(tempGO, clip.length); // destroy object after clip duration
@@ -299,11 +299,11 @@ public class LeanAudio : object {
 
 	public static void printOutAudioClip( AudioClip audioClip, ref AnimationCurve curve, float scaleX = 1f ){
 		// Debug.Log("Audio channels:"+audioClip.channels+" frequency:"+audioClip.frequency+" length:"+audioClip.length+" samples:"+audioClip.samples);
-		float[] samples = new float[audioClip.samples * audioClip.channels];
+		var samples = new float[audioClip.samples * audioClip.channels];
         audioClip.GetData(samples, 0);
-        int i = 0;
+        var i = 0;
 
-        Keyframe[] frames = new Keyframe[samples.Length];
+        var frames = new Keyframe[samples.Length];
         while (i < samples.Length) {
            frames[i] = new Keyframe( (float)i * scaleX, samples[i] );
            ++i;
