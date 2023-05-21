@@ -19,6 +19,11 @@ public class Fruit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("ObjectDestroyer"))
+        {
+            Destroy(gameObject);
+            _gameManager.RemoveLife();
+        }
         if (!other.CompareTag("Player")) return;
         if (!Input.GetMouseButton(0)) return; // Security check
         Destroy(gameObject);
@@ -26,12 +31,6 @@ public class Fruit : MonoBehaviour
         var explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(explosion, 1f);
         _gameManager.AddScore(1, false);
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-        _gameManager.RemoveLife();
     }
 
     private void Update()

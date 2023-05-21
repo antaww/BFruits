@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bomb
   - Fruit
+  - ObjectDestroyer
   layers:
   - Default
   - TransparentFX

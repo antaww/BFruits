@@ -73,7 +73,7 @@ public class Spawner : MonoBehaviour
             var force = Random.Range(MinForce, MaxForce); // Random force
             fruit.GetComponent<Rigidbody>()
                 .AddForce(randomDirection * force, ForceMode.Impulse); // Apply force to fruit
-
+            
             yield return new WaitForSeconds(Random.Range(_minSpawnDelay, _maxSpawnDelay)); // Wait for random time
         }
     }
