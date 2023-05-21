@@ -103,8 +103,8 @@ public class GameManager : MonoBehaviour
         lives--;
         if (lives <= 0)
         {
-            //todo: game over
-            // GameOver();
+			gameOverMenu.SetActive(true);
+			GameOver.GameOverMenu();
         }
     }
 }

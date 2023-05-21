@@ -12,7 +12,6 @@ public class GameOver : MonoBehaviour
     public static void GameOverMenu()
     {
         _GameOverMenu.SetActive(true);
-        Time.timeScale = 0f;
     }
 
     public void ExitGame()
