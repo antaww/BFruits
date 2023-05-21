@@ -18,7 +18,6 @@ public class Pause : MonoBehaviour
     
     public static void ResumeGame()
     {
-        print("ResumeGame");
         _pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GameManager.IsPaused = !GameManager.IsPaused;

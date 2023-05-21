@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        print(difficulty);
         UpdateScoreGUI();
         // UpdateLivesGUI();
 
