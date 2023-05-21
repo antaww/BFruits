@@ -11,13 +11,11 @@ public class Hover : MonoBehaviour
     
     public void HoverEnter()
     {
-        print("enter");
         LeanTween.scale(_text, new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
     }
     
     public void HoverExit()
     {
-        print("exit");
         LeanTween.scale(_text, new Vector3(1f, 1f, 1f), 0.1f);
     }
 }

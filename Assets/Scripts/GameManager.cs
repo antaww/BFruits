@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
     {
         scoreGUI.GetComponent<TextMeshProUGUI>().text = score.ToString();
 		scoreDeathGUI.GetComponent<TextMeshProUGUI>().text = score.ToString();
-		
     }
     
     private void UpdateLivesGUI()
@@ -115,11 +114,5 @@ public class GameManager : MonoBehaviour
     {
         isGameRunning = false;
         gameOverMenu.SetActive(true);
-        GameOver.GameOverMenu();
-    }
-    
-    public void ExitGame()
-    {
-        Application.Quit();
     }
 }

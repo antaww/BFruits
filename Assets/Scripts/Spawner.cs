@@ -8,8 +8,10 @@ public class Spawner : MonoBehaviour
     private Collider _spawnArea;
 
     public GameObject[] fruitsList;
+    public GameObject[] bonusesList;
     public GameObject bombPrefab;
     [Range(0f, 1f)] private float _bombChance = 0.05f;
+    [Range(0f, 1f)] private const float BonusChance = 0.9f;
 
     private float _minSpawnDelay = 0.25f;
     private float _maxSpawnDelay = 3f;
@@ -57,6 +59,10 @@ public class Spawner : MonoBehaviour
             if (random < _bombChance)
             {
                 prefab = bombPrefab;
+            }
+            if (random < BonusChance) // Do not do else if, because it will never spawn bonuses
+            {
+                prefab = bonusesList[Random.Range(0, bonusesList.Length)];
             }
 
             var position = new Vector3();

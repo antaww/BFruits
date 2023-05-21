@@ -7,14 +7,18 @@ public class Fruit : MonoBehaviour
     public GameObject fruitJuice;
     public GameObject slicedFruit;
     public GameObject explosionVFX;
+    
     private GameManager _gameManager;
 
     private Rigidbody _rb;
+
+    private int _points;
 
     private void Awake()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _rb = GetComponent<Rigidbody>();
+        _points = gameObject.CompareTag("Fruit") ? 1 : 10;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,13 +28,18 @@ public class Fruit : MonoBehaviour
             Destroy(gameObject);
             _gameManager.RemoveLife();
         }
+
         if (!other.CompareTag("Player")) return;
         if (!Input.GetMouseButton(0)) return; // Security check
         Destroy(gameObject);
-        InstantiateSlicedFruit();
+        if (slicedFruit != null)
+        {
+            InstantiateSlicedFruit();
+        }
+        InstantiateFruitJuice();
         var explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(explosion, 1f);
-        _gameManager.AddScore(1, false);
+        _gameManager.AddScore(_points, false);
     }
 
     private void Update()
@@ -44,8 +53,6 @@ public class Fruit : MonoBehaviour
         var position = transformVar.position; // Optimization
 
         var instantiatedSlicedFruit = Instantiate(slicedFruit, position, transformVar.rotation);
-        var instantiatedJuice =
-            Instantiate(fruitJuice, new Vector3(position.x, position.y, 0), fruitJuice.transform.rotation);
 
         var slicedRb = instantiatedSlicedFruit.transform.GetComponentsInChildren<Rigidbody>();
 
@@ -57,6 +64,14 @@ public class Fruit : MonoBehaviour
         }
 
         Destroy(instantiatedSlicedFruit, 5);
+    }
+    
+    private void InstantiateFruitJuice()
+    {
+        var position = transform.position; // Optimization
+        var instantiatedJuice =
+            Instantiate(fruitJuice, new Vector3(position.x, position.y, 0), fruitJuice.transform.rotation);
+        
         Destroy(instantiatedJuice, 5);
     }
 }
