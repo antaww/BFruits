@@ -5,11 +5,13 @@ public class GameManager : MonoBehaviour
 {
     public bool isGameRunning;
     public int score;
+	public int scoreDeath;
     public int lives = 3;
     public int difficulty;
     public static bool IsPaused;
 
     public GameObject scoreGUI;
+	public GameObject scoreDeathGUI;
     public GameObject livesGUI;
     public GameObject pauseMenu;
 	public GameObject gameOverMenu;
@@ -64,6 +66,8 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreGUI()
     {
         scoreGUI.GetComponent<TextMeshProUGUI>().text = score.ToString();
+		scoreDeathGUI.GetComponent<TextMeshProUGUI>().text = score.ToString();
+		
     }
     
     private void UpdateLivesGUI()

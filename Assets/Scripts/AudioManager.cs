@@ -16,15 +16,23 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip gameOverSound;
     [SerializeField] private AudioClip bombSound;
 
+    public static AudioManager Instance;
+
     private void Awake()
     {
-        //if scene name is menu, play menu music
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
+        if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
+            Instance.DestroyAudioManager();
         }
-
+        
+        Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void DestroyAudioManager()
+    {
+        Instance = null;
+        Destroy(gameObject);
     }
 
     private void Start()
