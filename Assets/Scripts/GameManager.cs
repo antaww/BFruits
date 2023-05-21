@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isGameRunning;
     public int score;
     public int lives = 3;
     public int difficulty;
@@ -10,15 +11,16 @@ public class GameManager : MonoBehaviour
 
     public GameObject scoreGUI;
     public GameObject livesGUI;
-    
     public GameObject pauseMenu;
-    public GameObject slashSound;
-    public GameObject bombSound;
 	public GameObject gameOverMenu;
 
+    public GameObject slashSound;
+    public GameObject bombSound;
+    
     private void Awake()
     {
         difficulty = PlayerPrefs.GetInt("difficulty");
+        isGameRunning = true;
         pauseMenu.SetActive(false);
 		gameOverMenu.SetActive(false);
         UpdateScoreGUI();
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
         UpdateScoreGUI();
         UpdateLivesGUI();
 
+        if (!isGameRunning) return;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (IsPaused)
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int points, bool isBomb)
     {
+        if (!isGameRunning) return;
         // Score GUI animation
         LeanTween.scale(scoreGUI, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
         LeanTween.scale(scoreGUI.transform.parent.gameObject, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
@@ -97,6 +101,7 @@ public class GameManager : MonoBehaviour
 
     public void RemoveLife()
     {
+        if (!isGameRunning) return;
         lives--;
         if (lives > 0) return;
         EndGame();
@@ -104,6 +109,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        isGameRunning = false;
         gameOverMenu.SetActive(true);
         GameOver.GameOverMenu();
     }

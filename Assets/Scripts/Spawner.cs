@@ -39,9 +39,9 @@ public class Spawner : MonoBehaviour
         StartCoroutine(Spawn()); // Start spawning
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        StopAllCoroutines(); // Stop all coroutines
+        if (!gameManager.isGameRunning) StopAllCoroutines(); // Stop all coroutines
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
