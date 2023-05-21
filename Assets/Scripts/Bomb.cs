@@ -22,7 +22,7 @@ public class Bomb : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
-        //todo: add score
+        _gameManager.AddScore(1);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,6 +33,6 @@ public class Bomb : MonoBehaviour
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         _mainCamera.GetComponent<Shake>().isShaking = true;
         _gameManager.PlayExplosionSound();
-        //todo: remove 1 life
+        //todo: game over
     }
 }

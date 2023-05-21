@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour
         difficulty = PlayerPrefs.GetInt("difficulty");
         pauseMenu.SetActive(false);
         UpdateScoreGUI();
-        // UpdateLivesGUI();
+        UpdateLivesGUI();
     }
 
     private void Update()
     {
         UpdateScoreGUI();
-        // UpdateLivesGUI();
+        UpdateLivesGUI();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -60,10 +60,47 @@ public class GameManager : MonoBehaviour
     {
         scoreGUI.GetComponent<TextMeshProUGUI>().text = score.ToString();
     }
+    
+    private void UpdateLivesGUI()
+    {
+        switch (lives)
+        {
+            case 3:
+                livesGUI.transform.GetChild(0).gameObject.SetActive(true);
+                livesGUI.transform.GetChild(1).gameObject.SetActive(true);
+                livesGUI.transform.GetChild(2).gameObject.SetActive(true);
+                break;
+            case 2:
+                livesGUI.transform.GetChild(0).gameObject.SetActive(true);
+                livesGUI.transform.GetChild(1).gameObject.SetActive(true);
+                livesGUI.transform.GetChild(2).gameObject.SetActive(false);
+                break;
+            case 1:
+                livesGUI.transform.GetChild(0).gameObject.SetActive(true);
+                livesGUI.transform.GetChild(1).gameObject.SetActive(false);
+                livesGUI.transform.GetChild(2).gameObject.SetActive(false);
+                break;
+            case 0:
+                livesGUI.transform.GetChild(0).gameObject.SetActive(false);
+                livesGUI.transform.GetChild(1).gameObject.SetActive(false);
+                livesGUI.transform.GetChild(2).gameObject.SetActive(false);
+                break;
+        }
+    }
 
     public void PlayExplosionSound()
     {
         bombSound.GetComponent<AudioSource>().time = 0.2f;
         bombSound.GetComponent<AudioSource>().Play();
+    }
+
+    public void RemoveLife()
+    {
+        lives--;
+        if (lives <= 0)
+        {
+            //todo: game over
+            // GameOver();
+        }
     }
 }
