@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject scoreGUI;
 	public GameObject scoreDeathGUI;
     public GameObject livesGUI;
+	public AudioSource LivesSound;
     public GameObject pauseMenu;
 	public GameObject gameOverMenu;
 
@@ -105,7 +106,8 @@ public class GameManager : MonoBehaviour
     public void RemoveLife()
     {
         if (!isGameRunning) return;
-        lives--;
+		lives--;
+		LivesSound.GetComponent<AudioSource>().Play();
         if (lives > 0) return;
         EndGame();
     }
