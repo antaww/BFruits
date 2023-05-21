@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject scoreGUI;
     public GameObject livesGUI;
+    
     public GameObject pauseMenu;
     public GameObject slashSound;
+    public GameObject bombSound;
 
     private void Awake()
     {
@@ -60,5 +62,11 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreGUI()
     {
         scoreGUI.GetComponent<TextMeshProUGUI>().text = score.ToString();
+    }
+
+    public void PlayExplosionSound()
+    {
+        bombSound.GetComponent<AudioSource>().time = 0.2f;
+        bombSound.GetComponent<AudioSource>().Play();
     }
 }
