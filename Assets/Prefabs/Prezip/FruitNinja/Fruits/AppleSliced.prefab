@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4765679560550933929}
   - component: {fileID: 3376629477657777039}
   - component: {fileID: 5852193436951840311}
+  - component: {fileID: 1692235216372272441}
   m_Layer: 0
   m_Name: AppleDown
   m_TagString: Untagged
@@ -148,6 +149,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &1692235216372272441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279751853863007616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7261640686560997363
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +174,7 @@ GameObject:
   - component: {fileID: 5823750182529224093}
   - component: {fileID: 8783315219289605631}
   - component: {fileID: 324878029278863041}
+  - component: {fileID: 3471784056558526531}
   m_Layer: 0
   m_Name: AppleUp
   m_TagString: Untagged
@@ -263,3 +277,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &3471784056558526531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261640686560997363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

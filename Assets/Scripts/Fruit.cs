@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-    private const float RotationForce = 200;
+    public const float RotationForce = 200;
 
     public GameObject fruitJuice;
     public GameObject slicedFruit;
@@ -31,7 +31,7 @@ public class Fruit : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
-        //todo: remove 1 life
+        _gameManager.RemoveLife();
     }
 
     private void Update()
@@ -52,7 +52,7 @@ public class Fruit : MonoBehaviour
 
         foreach (var srb in slicedRb)
         {
-            srb.AddExplosionForce(130f, transform.position, 10);
+            srb.AddExplosionForce(Random.Range(20f, 70f), transform.position, 10, 0f, ForceMode.Impulse);
             srb.velocity = _rb.velocity * 1.2f;
         }
 

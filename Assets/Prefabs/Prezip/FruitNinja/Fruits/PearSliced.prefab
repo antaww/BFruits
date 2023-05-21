@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 346465915309527607}
   - component: {fileID: 5677905393975261775}
   - component: {fileID: 8621583742393225800}
+  - component: {fileID: 2948663984146576865}
   m_Layer: 0
   m_Name: PearUp
   m_TagString: Untagged
@@ -115,6 +116,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &2948663984146576865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503478095852654739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6995453474846924345
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +174,7 @@ GameObject:
   - component: {fileID: 3811111342081713591}
   - component: {fileID: 2251129402457028329}
   - component: {fileID: 9162299311253813459}
+  - component: {fileID: 676060692319075554}
   m_Layer: 0
   m_Name: PearDown
   m_TagString: Untagged
@@ -263,3 +277,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &676060692319075554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674637149414286422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

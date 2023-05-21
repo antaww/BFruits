@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2253919548250564002}
   - component: {fileID: 8378332366804880793}
   - component: {fileID: 4343068980450242299}
+  - component: {fileID: 1352046043497295618}
   m_Layer: 0
   m_Name: OrangeDown
   m_TagString: Untagged
@@ -115,6 +116,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &1352046043497295618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266180004507679544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5822990487296261168
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +174,7 @@ GameObject:
   - component: {fileID: 9155846675333276297}
   - component: {fileID: 7048544405139840819}
   - component: {fileID: 3789683944825326016}
+  - component: {fileID: 4933374743152092085}
   m_Layer: 0
   m_Name: OrangeUp
   m_TagString: Untagged
@@ -263,3 +277,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &4933374743152092085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6193014502593867445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

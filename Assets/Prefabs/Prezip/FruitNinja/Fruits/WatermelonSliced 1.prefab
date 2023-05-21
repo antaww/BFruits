@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2352255218882839673}
   - component: {fileID: 658129412529915104}
   - component: {fileID: 2423598960863924848}
+  - component: {fileID: 295159033246477708}
   m_Layer: 0
   m_Name: WaterMelonDown
   m_TagString: Untagged
@@ -148,6 +149,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &295159033246477708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472777076255218235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7504666315246895827
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +174,7 @@ GameObject:
   - component: {fileID: 8942353217452264985}
   - component: {fileID: 7258391869555614089}
   - component: {fileID: 2501030538271002479}
+  - component: {fileID: 6997753228724148933}
   m_Layer: 0
   m_Name: WatermelonUp
   m_TagString: Untagged
@@ -263,3 +277,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &6997753228724148933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7504666315246895827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

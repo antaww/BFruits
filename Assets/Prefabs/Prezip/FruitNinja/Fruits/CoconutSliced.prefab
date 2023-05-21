@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2417406171533443603}
   - component: {fileID: 5543909993163080594}
   - component: {fileID: 2678260639665574884}
+  - component: {fileID: 6432089670634087495}
   m_Layer: 0
   m_Name: CoconutDown
   m_TagString: Untagged
@@ -115,6 +116,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &6432089670634087495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141627593272972778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1082127775809187640
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +141,7 @@ GameObject:
   - component: {fileID: 3982614299079001108}
   - component: {fileID: 6636644346359713142}
   - component: {fileID: 2693777760127533301}
+  - component: {fileID: 1017111586456259624}
   m_Layer: 0
   m_Name: CoconutUp
   m_TagString: Untagged
@@ -230,6 +244,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &1017111586456259624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082127775809187640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef06f48e62397478eb53493b8c3536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7275307241191228996
 GameObject:
   m_ObjectHideFlags: 0
