@@ -18,7 +18,7 @@ public class Fruit : MonoBehaviour
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _rb = GetComponent<Rigidbody>();
-        _points = gameObject.CompareTag("Fruit") ? 1 : 10;
+        _points = gameObject.CompareTag("Fruit") ? 1 : Random.Range(10, 20); // Element with the script & tag "Fruit" is a fruit (1 point), else it's a bonus (10-20 points)
     }
 
     private void OnTriggerEnter(Collider other)
