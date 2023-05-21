@@ -16,11 +16,13 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject slashSound;
     public GameObject bombSound;
+	public GameObject gameOverMenu;
 
     private void Awake()
     {
         difficulty = PlayerPrefs.GetInt("difficulty");
         pauseMenu.SetActive(false);
+		gameOverMenu.SetActive(false);
         UpdateScoreGUI();
         UpdateLivesGUI();
     }
@@ -93,6 +95,7 @@ public class GameManager : MonoBehaviour
     {
         bombSound.GetComponent<AudioSource>().time = 0.2f;
         bombSound.GetComponent<AudioSource>().Play();
+		gameOverMenu.SetActive(true);
     }
 
     public void RemoveLife()
