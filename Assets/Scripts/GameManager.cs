@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddScore(int points)
+    public void AddScore(int points, bool isBomb)
     {
         // Score GUI animation
         LeanTween.scale(scoreGUI, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         
         score += points;
         
+        if (isBomb) return;
         slashSound.GetComponent<AudioSource>().time = 1.2f;
         slashSound.GetComponent<AudioSource>().Play();
     }

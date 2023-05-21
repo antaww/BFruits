@@ -22,7 +22,7 @@ public class Bomb : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
-        _gameManager.AddScore(1);
+        _gameManager.AddScore(1, true);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -25,7 +25,7 @@ public class Fruit : MonoBehaviour
         InstantiateSlicedFruit();
         var explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(explosion, 1f);
-        _gameManager.AddScore(1);
+        _gameManager.AddScore(1, false);
     }
 
     private void OnBecameInvisible()
@@ -54,6 +54,7 @@ public class Fruit : MonoBehaviour
         {
             srb.AddExplosionForce(Random.Range(20f, 70f), transform.position, 10, 0f, ForceMode.Impulse);
             srb.velocity = _rb.velocity * 1.2f;
+            srb.mass = 8f;
         }
 
         Destroy(instantiatedSlicedFruit, 5);

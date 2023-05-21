@@ -9,19 +9,19 @@ public class Spawner : MonoBehaviour
 
     public GameObject[] fruitsList;
     public GameObject bombPrefab;
-    [Range(0f, 1f)] public float bombChance = 0.01f;
+    [Range(0f, 1f)] private float _bombChance = 0.05f;
 
-    public float minSpawnDelay = 0.25f;
-    public float maxSpawnDelay = 1f;
+    private float _minSpawnDelay = 0.25f;
+    private float _maxSpawnDelay = 3f;
 
-    public float minAngle = -15f;
-    public float maxAngle = 15f;
+    private const float MinAngle = -15f;
+    private const float MaxAngle = 15f;
 
-    public float minForce = 18f;
-    public float maxForce = 22f;
-    
-    public float left = -0.2f;
-    public float right = 0.2f;
+    private const float MinForce = 18f;
+    private const float MaxForce = 22f;
+
+    private const float Left = -0.2f;
+    private const float Right = 0.2f;
 
     private void Awake()
     {
@@ -29,9 +29,9 @@ public class Spawner : MonoBehaviour
 
         // Edit spawner stats based on difficulty
         if (gameManager.difficulty <= 1) return;
-        bombChance *= gameManager.difficulty;
-        minSpawnDelay /= gameManager.difficulty;
-        maxSpawnDelay /= gameManager.difficulty;
+        _bombChance *= gameManager.difficulty * 2.5f;
+        _minSpawnDelay /= gameManager.difficulty * 2f;
+        _maxSpawnDelay /= gameManager.difficulty * 2f;
     }
 
     private void OnEnable()
@@ -54,7 +54,7 @@ public class Spawner : MonoBehaviour
             var prefab = fruitsList[Random.Range(0, fruitsList.Length)];
             var random = Random.value;
 
-            if (random < bombChance)
+            if (random < _bombChance)
             {
                 prefab = bombPrefab;
             }
@@ -65,16 +65,16 @@ public class Spawner : MonoBehaviour
             position.y = Random.Range(_spawnArea.bounds.min.y, bounds.max.y);
             position.z = Random.Range(_spawnArea.bounds.min.z, bounds.max.z);
 
-            var rotation = Quaternion.Euler(0f, 0f, Random.Range(minAngle, maxAngle)); // Random rotation
+            var rotation = Quaternion.Euler(0f, 0f, Random.Range(MinAngle, MaxAngle)); // Random rotation
 
             var fruit = Instantiate(prefab, position, rotation); // Spawn fruit
-            
-            var randomDirection = new Vector2(Random.Range(left, right), 1).normalized; // Random direction
-            var force = Random.Range(minForce, maxForce); // Random force
+
+            var randomDirection = new Vector2(Random.Range(Left, Right), 1).normalized; // Random direction
+            var force = Random.Range(MinForce, MaxForce); // Random force
             fruit.GetComponent<Rigidbody>()
                 .AddForce(randomDirection * force, ForceMode.Impulse); // Apply force to fruit
 
-            yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay)); // Wait for random time
+            yield return new WaitForSeconds(Random.Range(_minSpawnDelay, _maxSpawnDelay)); // Wait for random time
         }
     }
 }
