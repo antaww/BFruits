@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BladeTrail : MonoBehaviour
 {
-    public Vector3 Direction { get; private set; }
+    private Vector3 Direction { get; set; }
 
     private Camera _mainCamera;
 
@@ -66,12 +66,13 @@ public class BladeTrail : MonoBehaviour
         var newPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         newPosition.z = 0f;
 
-        Direction = newPosition - transform.position;
+        var transform1 = transform;
+        Direction = newPosition - transform1.position;
 
         var velocity = Direction.magnitude / Time.deltaTime;
         _sliceCollider.enabled = velocity > minSliceVelocity;
 
-        transform.position = newPosition;
+        transform1.position = newPosition;
     }
 
 }

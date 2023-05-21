@@ -33,6 +33,6 @@ public class Bomb : MonoBehaviour
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         _mainCamera.GetComponent<Shake>().isShaking = true;
         _gameManager.PlayExplosionSound();
-        //todo: game over
+        _gameManager.EndGame();
     }
 }

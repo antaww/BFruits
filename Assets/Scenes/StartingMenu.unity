@@ -1607,13 +1607,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394d3c12fa0a5c944abf758fb0d9d9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicSource: {fileID: 1988759512}
-  _sfxSource: {fileID: 1822869339}
-  _menuMusic: {fileID: 8300000, guid: dfa76dbf3fce64849bdedd780f9a5e81, type: 3}
-  _gameMusic: {fileID: 0}
-  _slashSound: {fileID: 8300000, guid: e4ee8a33b0a9d254c933f8d058928c33, type: 3}
-  _gameOverSound: {fileID: 0}
-  _bombSound: {fileID: 0}
+  musicSource: {fileID: 1988759512}
+  sfxSource: {fileID: 0}
+  menuMusic: {fileID: 8300000, guid: dfa76dbf3fce64849bdedd780f9a5e81, type: 3}
+  gameMusic: {fileID: 0}
+  slashSound: {fileID: 0}
+  gameOverSound: {fileID: 0}
+  bombSound: {fileID: 0}
 --- !u!4 &1344660253
 Transform:
   m_ObjectHideFlags: 0

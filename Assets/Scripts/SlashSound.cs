@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SlashSound : MonoBehaviour
 {
     public AudioSource slashSound;
-    
-    void OnCollisionEnter(Collision collision)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Fruit")
+        if (collision.gameObject.CompareTag("Fruit"))
         {
             slashSound.Play();
         }

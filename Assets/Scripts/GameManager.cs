@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -95,16 +93,23 @@ public class GameManager : MonoBehaviour
     {
         bombSound.GetComponent<AudioSource>().time = 0.2f;
         bombSound.GetComponent<AudioSource>().Play();
-		gameOverMenu.SetActive(true);
     }
 
     public void RemoveLife()
     {
         lives--;
-        if (lives <= 0)
-        {
-			gameOverMenu.SetActive(true);
-			GameOver.GameOverMenu();
-        }
+        if (lives > 0) return;
+        EndGame();
+    }
+
+    public void EndGame()
+    {
+        gameOverMenu.SetActive(true);
+        GameOver.GameOverMenu();
+    }
+    
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("-- Audio Sources --")]
-    [SerializeField] AudioSource _musicSource;
-    [SerializeField] AudioSource _sfxSource;
-    
-    [Header("-- Audio Clips --")]
-    [SerializeField] AudioClip _menuMusic;
-    [SerializeField] AudioClip _gameMusic;
-    [SerializeField] AudioClip _slashSound;
-    [SerializeField] AudioClip _gameOverSound;
-    [SerializeField] AudioClip _bombSound;
+    [FormerlySerializedAs("_musicSource")] [Header("-- Audio Sources --")] [SerializeField]
+    private AudioSource musicSource;
+
+    [SerializeField] private AudioSource sfxSource;
+
+    [Header("-- Audio Clips --")] [SerializeField]
+    private AudioClip menuMusic;
+
+    [SerializeField] private AudioClip gameMusic;
+    [SerializeField] private AudioClip slashSound;
+    [SerializeField] private AudioClip gameOverSound;
+    [SerializeField] private AudioClip bombSound;
 
     private void Awake()
     {
@@ -22,16 +23,13 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         DontDestroyOnLoad(gameObject);
     }
+
     private void Start()
     {
-        _musicSource.clip = _menuMusic;
-        _musicSource.Play();
-    }
-    
-    public void PlaySlashSound(AudioClip clip)
-    {
-        _sfxSource.PlayOneShot(_slashSound);
+        musicSource.clip = menuMusic;
+        musicSource.Play();
     }
 }

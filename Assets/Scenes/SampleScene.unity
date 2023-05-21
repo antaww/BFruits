@@ -1848,7 +1848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced29c2b4bab92b44af94c5b3b50d737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _volumeSlider: {fileID: 951665888}
+  volumeSlider: {fileID: 0}
 --- !u!114 &951665888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3218,7 +3218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629123327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.6838255, y: -1.1, z: 10.1}
+  m_LocalPosition: {x: 4.6838255, y: -2.9, z: 10.1}
   m_LocalScale: {x: 93.34, y: 1, z: 81.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
