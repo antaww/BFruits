@@ -28,6 +28,7 @@ public class Bomb : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
+        if(!_gameManager.isGameRunning) return;
         if (!Input.GetMouseButton(0)) return; // Security check
         Destroy(gameObject);
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);

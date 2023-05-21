@@ -30,6 +30,7 @@ public class Fruit : MonoBehaviour
         }
 
         if (!other.CompareTag("Player")) return;
+        if(!_gameManager.isGameRunning) return;
         if (!Input.GetMouseButton(0)) return; // Security check
         Destroy(gameObject);
         if (slicedFruit != null)
