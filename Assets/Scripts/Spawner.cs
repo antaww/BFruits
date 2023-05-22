@@ -12,8 +12,8 @@ public class Spawner : MonoBehaviour
     public GameObject[] penaltiesList;
     public GameObject bombPrefab;
     [Range(0f, 1f)] private float _penaltyChance = 0.05f;
-    [Range(0f, 1f)] private float _bombChance = 0.03f;
-    [Range(0f, 1f)] private const float BonusChance = 0.02f;
+    [Range(0f, 1f)] private float _bombChance = 0.04f;
+    [Range(0f, 1f)] private const float BonusChance = 0.03f;
 
     private float _minSpawnDelay = 0.15f;
     private float _maxSpawnDelay = 3f;
@@ -57,7 +57,7 @@ public class Spawner : MonoBehaviour
         while (enabled)
         {
             var prefab = fruitsList[Random.Range(0, fruitsList.Length)];
-            var random = Random.value;
+            var random = Random.Range(0f, 1f);
 
             if(random < _penaltyChance)
             {
