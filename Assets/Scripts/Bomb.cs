@@ -4,7 +4,7 @@ public class Bomb : MonoBehaviour
 {
     private const float RotationForce = 200;
     public ParticleSystem explosionParticle;
-    
+
     private Camera _mainCamera;
     private GameManager _gameManager;
 
@@ -18,17 +18,17 @@ public class Bomb : MonoBehaviour
     {
         transform.Rotate(Vector2.right * (Time.deltaTime * RotationForce));
     }
-    
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-        _gameManager.AddScore(1, true);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("ObjectDestroyer"))
+        {
+            Destroy(gameObject);
+            _gameManager.AddScore(1, true);
+        }
+
         if (!other.CompareTag("Player")) return;
-        if(!_gameManager.isGameRunning) return;
+        if (!_gameManager.isGameRunning) return;
         if (!Input.GetMouseButton(0)) return; // Security check
         Destroy(gameObject);
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);

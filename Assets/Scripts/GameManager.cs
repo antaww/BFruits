@@ -71,6 +71,20 @@ public class GameManager : MonoBehaviour
         slashSound.GetComponent<AudioSource>().volume = 2f;
         slashSound.GetComponent<AudioSource>().Play();
     }
+    
+    public void RemoveScore(int points)
+    {
+        if (!isGameRunning) return;
+        // Score GUI animation
+        LeanTween.scale(scoreGUI, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
+        LeanTween.scale(scoreGUI.transform.parent.gameObject, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
+
+        score -= points;
+
+        slashSound.GetComponent<AudioSource>().time = 1.2f;
+        slashSound.GetComponent<AudioSource>().volume = 2f;
+        slashSound.GetComponent<AudioSource>().Play();
+    }
 
     // ReSharper disable Unity.PerformanceAnalysis
     private void UpdateScoreGUI()
@@ -128,9 +142,10 @@ public class GameManager : MonoBehaviour
         gameOverMenu.SetActive(true);
     }
 
-    public void ShowFloatingText(string effect, Vector3 position)
+    public void ShowFloatingText(string effect, Vector3 position, byte r, byte g, byte b)
     {
         var instantiatedFloatingText = Instantiate(floatingCanvasPrefab, new Vector3(position.x, position.y, -42.6f), Quaternion.identity);
+        instantiatedFloatingText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color32(r, g, b, 255);
         instantiatedFloatingText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = effect;
         LeanTween.scale(instantiatedFloatingText, new Vector3(1.1f, 1.1f, 1.1f), 0.3f).setEasePunch();
         LeanTween.scale(instantiatedFloatingText, new Vector3(1f, 1f, 1f), 0.3f).setEasePunch().setDelay(0.3f);

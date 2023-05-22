@@ -366,8 +366,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
-  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d,
-    type: 2}
+  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -502,8 +501,7 @@ MonoBehaviour:
   m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
-  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d,
-    type: 2}
+  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -791,15 +789,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 375782564}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 375782569}, m_TargetAssemblyTypeName: 'Pause,
-            Assembly-CSharp', m_MethodName: ExitGame, m_Mode: 1, m_Arguments: {m_ObjectArgument: {
-              fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object, UnityEngine',
-            m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '', m_BoolArgument: 0},
-          m_CallState: 2}, {m_Target: {fileID: 375782568}, m_TargetAssemblyTypeName: 'Pause,
-            Assembly-CSharp', m_MethodName: ExitGame, m_Mode: 1, m_Arguments: {m_ObjectArgument: {
-              fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object, UnityEngine',
-            m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '', m_BoolArgument: 0},
-          m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 375782569}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 375782568}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &375782564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,8 +1571,7 @@ MonoBehaviour:
   m_text: Resume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 133df2fa7d90e314e8814b8e22a4a882, type: 2}
-  m_sharedMaterial: {fileID: 5109193477181398481, guid: 133df2fa7d90e314e8814b8e22a4a882,
-    type: 2}
+  m_sharedMaterial: {fileID: 5109193477181398481, guid: 133df2fa7d90e314e8814b8e22a4a882, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1749,8 +1762,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
-  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d,
-    type: 2}
+  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1973,8 +1985,7 @@ MonoBehaviour:
   m_text: Game Over
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
-  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d,
-    type: 2}
+  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2689,8 +2700,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e8e78a353263204b81026d063986d52, type: 2}
-  m_sharedMaterial: {fileID: 3455084973379091586, guid: 0e8e78a353263204b81026d063986d52,
-    type: 2}
+  m_sharedMaterial: {fileID: 3455084973379091586, guid: 0e8e78a353263204b81026d063986d52, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3039,6 +3049,8 @@ MonoBehaviour:
   scoreDeath: 0
   lives: 3
   difficulty: 0
+  isDoublePoints: 0
+  isTriplePoints: 0
   scoreGUI: {fileID: 1976807734}
   scoreDeathGUI: {fileID: 170364746}
   livesGUI: {fileID: 140364219}
@@ -3047,8 +3059,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 782206009}
   slashSound: {fileID: 982683409}
   bombSound: {fileID: 178621383}
-  floatingCanvasPrefab: {fileID: 3689160051062485841, guid: 87d9d5715e7da544aac798d0660cde9b,
-    type: 3}
+  floatingCanvasPrefab: {fileID: 3689160051062485841, guid: 87d9d5715e7da544aac798d0660cde9b, type: 3}
 --- !u!4 &1287727191
 Transform:
   m_ObjectHideFlags: 0
@@ -3529,8 +3540,10 @@ MonoBehaviour:
   - {fileID: 7148414508254640294, guid: 23c4e8f11ba17b8408829068a33af147, type: 3}
   - {fileID: 7148414508254640294, guid: b29a4a18a98a72e49918cd3e1faf7671, type: 3}
   - {fileID: 7148414508254640294, guid: 2b54419cc26e4e144b4dd0af26f66586, type: 3}
-  bombPrefab: {fileID: 4473449225418355192, guid: c8eafb37041b41c45bcc6a8be84a1bbf,
-    type: 3}
+  penaltiesList:
+  - {fileID: 7148414508254640294, guid: 4e4b9d691e46d3f4080121c3c70f0cb3, type: 3}
+  - {fileID: 7148414508254640294, guid: e4b629b676b060f479de0068966bc893, type: 3}
+  bombPrefab: {fileID: 4473449225418355192, guid: c8eafb37041b41c45bcc6a8be84a1bbf, type: 3}
 --- !u!65 &1553149067
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3822,8 +3835,7 @@ MonoBehaviour:
   m_text: 'Score '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
-  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d,
-    type: 2}
+  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4517,8 +4529,7 @@ MonoBehaviour:
   m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
-  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d,
-    type: 2}
+  m_sharedMaterial: {fileID: 1667018852963237139, guid: 0e3cb24df214bc44f93bb3eea657fe5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -19,7 +19,7 @@ public class Fruit : MonoBehaviour
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _rb = GetComponent<Rigidbody>();
-        _points = gameObject.CompareTag("Fruit") ? 1 : 0;
+        _points = gameObject.CompareTag("Fruit") ? 1 : 0; // Only fruits give points
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +27,14 @@ public class Fruit : MonoBehaviour
         if (other.CompareTag("ObjectDestroyer"))
         {
             Destroy(gameObject);
-            _gameManager.RemoveLife();
+            if (gameObject.CompareTag("Penalty"))
+            {
+                _gameManager.AddScore(1, true);
+            }
+            else
+            {
+                _gameManager.RemoveLife();
+            }
         }
 
         if (!other.CompareTag("Player")) return;
@@ -36,13 +43,19 @@ public class Fruit : MonoBehaviour
         SliceFruit(gameObject, slicedFruit, _rb, fruitJuice, explosionVFX, _gameManager, _points);
     }
 
-    public static void SliceFruit(GameObject fruit, GameObject slicedFruit, Rigidbody rb, GameObject fruitJuice, GameObject explosionVFX, GameManager gameManager, int points)
+    public static void SliceFruit(GameObject fruit, GameObject slicedFruit, Rigidbody rb, GameObject fruitJuice,
+        GameObject explosionVFX, GameManager gameManager, int points)
     {
         fruit.GetComponent<Collider>().enabled = false;
         Destroy(fruit);
         if (fruit.CompareTag("Bonus"))
         {
             Bonus.ApplyBonusEffect(fruit.name, fruit.transform.position);
+        }
+
+        if (fruit.CompareTag("Penalty"))
+        {
+            Penalty.ApplyPenaltyEffect(fruit.name, fruit.transform.position);
         }
 
         if (slicedFruit != null)
