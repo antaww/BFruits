@@ -96,8 +96,10 @@ public class Fruit : MonoBehaviour
     private static void InstantiateFruitJuice(GameObject fruit, GameObject fruitJuice)
     {
         var position = fruit.transform.position; // Optimization
+        var rotation = fruitJuice.transform.rotation;
         var instantiatedJuice =
-            Instantiate(fruitJuice, new Vector3(position.x, position.y, 0), fruitJuice.transform.rotation);
+            Instantiate(fruitJuice, new Vector3(position.x, position.y, 0),
+                Quaternion.Euler(rotation.x, rotation.y, Random.Range(0f, 360f)));
 
         Destroy(instantiatedJuice, 5);
     }
