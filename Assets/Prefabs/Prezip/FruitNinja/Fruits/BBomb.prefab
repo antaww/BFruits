@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6919431241857660720}
   - component: {fileID: 5858391251910999212}
   - component: {fileID: 338391103618352100}
+  - component: {fileID: 4612777010028526345}
   m_Layer: 0
   m_Name: BBomb
   m_TagString: Penalty
@@ -145,6 +146,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49eca93944028f4d8b2c34af5e7b21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4612777010028526345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148414508254640294}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &461583098434015289
 PrefabInstance:
   m_ObjectHideFlags: 0
