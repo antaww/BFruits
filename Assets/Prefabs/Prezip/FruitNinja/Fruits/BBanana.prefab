@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92451745958bff342ad54a06ca55432a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingText: {fileID: 5704509409572858159, guid: 53fa97ef752768b46acc5fe231e9fdd8, type: 3}
   fruitJuice: {fileID: 8666788058111210460, guid: 900775f75e8dafe428368f02f0c57c2b, type: 3}
   slicedFruit: {fileID: 0}
   explosionVFX: {fileID: 3330048529440655427}

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject slashSound;
     public GameObject bombSound;
+
+    public GameObject floatingCanvasPrefab;
     
     private void Awake()
     {

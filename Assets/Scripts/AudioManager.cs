@@ -16,22 +16,22 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip gameOverSound;
     [SerializeField] private AudioClip bombSound;
 
-    public static AudioManager Instance;
+    private static AudioManager _instance;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (_instance != null && _instance != this)
         {
-            Instance.DestroyAudioManager();
+            _instance.DestroyAudioManager();
         }
         
-        Instance = this;
+        _instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
-    public void DestroyAudioManager()
+    private void DestroyAudioManager()
     {
-        Instance = null;
+        _instance = null;
         Destroy(gameObject);
     }
 

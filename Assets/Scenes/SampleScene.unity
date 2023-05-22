@@ -299,7 +299,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2892,6 +2892,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 782206009}
   slashSound: {fileID: 982683409}
   bombSound: {fileID: 178621383}
+  floatingCanvasPrefab: {fileID: 4929341426843527200, guid: 87d9d5715e7da544aac798d0660cde9b, type: 3}
 --- !u!4 &1287727191
 Transform:
   m_ObjectHideFlags: 0
