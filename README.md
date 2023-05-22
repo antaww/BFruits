@@ -36,7 +36,7 @@ B-Fruits is an exciting game inspired by "Fruit Ninja" but with a unique twist. 
 ```bash
 git clone https://github.com/antaww/BFruits.git
 ```
-2. Launch BFruits.exe
+2. Launch BFruits.exe in BFruits/GameBuild
 3. Enjoy!
 
 ## License
