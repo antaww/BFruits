@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         if (!isGameRunning) return;
 		lives--;
 		LivesSound.GetComponent<AudioSource>().time = 0.3f;
+		LivesSound.GetComponent<AudioSource>().volume = 0.5f;
 		LivesSound.GetComponent<AudioSource>().Play();
         if (lives > 0) return;
         EndGame();
