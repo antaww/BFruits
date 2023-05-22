@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Penalty : MonoBehaviour
 {
     private static GameManager _gameManager;
 
-    private const string BBombEffect = "-1 life"; //todo: find why "-" is not displayed
-    private const string BRobEffect = "-50"; //todo: find why "-" is not displayed
+    private const string BBombEffect = "-1 life";
+    private const string BRobEffect = "-50";
 
     private void Awake()
     {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,11 +9,11 @@ public class Bonus : MonoBehaviour
     private static float _x3Timer;
 
     private const string BAppleEffect = "x2";
-    private const string BPeachEffect = "+20"; //todo: find why "+" is not displayed
+    private const string BPeachEffect = "+20";
     private const string BAvocadoEffect = "Magic explosion";
-    private const string BBananaEffect = "+10"; //todo: find why "+" is not displayed
+    private const string BBananaEffect = "+10";
     private const string BOrangeEffect = "x3";
-    private const string BWatermelonEffect = "+5"; //todo: find why "+" is not displayed
+    private const string BWatermelonEffect = "+5";
 
     private void Awake()
     {

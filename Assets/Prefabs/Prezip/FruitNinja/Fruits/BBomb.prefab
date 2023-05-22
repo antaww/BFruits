@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1083849857817193229}
   - component: {fileID: 6919431241857660720}
   - component: {fileID: 5858391251910999212}
-  - component: {fileID: 338391103618352100}
   - component: {fileID: 4612777010028526345}
+  - component: {fileID: 7853333093936947792}
   m_Layer: 0
   m_Name: BBomb
   m_TagString: Penalty
@@ -134,18 +134,6 @@ MonoBehaviour:
   fruitJuice: {fileID: 329867733017110776, guid: ee37f7934c51cca40b2bd887c93ad4fc, type: 3}
   slicedFruit: {fileID: 0}
   explosionVFX: {fileID: 3330048529440655427}
---- !u!114 &338391103618352100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148414508254640294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d49eca93944028f4d8b2c34af5e7b21d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4612777010028526345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +152,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &7853333093936947792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148414508254640294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e8fabcc60100741a9b69420c8804cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &461583098434015289
 PrefabInstance:
   m_ObjectHideFlags: 0

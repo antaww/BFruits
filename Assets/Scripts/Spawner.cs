@@ -11,9 +11,9 @@ public class Spawner : MonoBehaviour
     public GameObject[] bonusesList;
     public GameObject[] penaltiesList;
     public GameObject bombPrefab;
-    [Range(0f, 1f)] private float _bombChance = 0.03f;
     [Range(0f, 1f)] private float _penaltyChance = 0.05f;
-    [Range(0f, 1f)] private const float BonusChance = 0.9f;
+    [Range(0f, 1f)] private float _bombChance = 0.03f;
+    [Range(0f, 1f)] private const float BonusChance = 0.02f;
 
     private float _minSpawnDelay = 0.15f;
     private float _maxSpawnDelay = 3f;
