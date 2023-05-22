@@ -1398,6 +1398,7 @@ GameObject:
   - component: {fileID: 1222282930}
   - component: {fileID: 1222282933}
   - component: {fileID: 1222282935}
+  - component: {fileID: 1222282936}
   - component: {fileID: 1222282934}
   m_Layer: 5
   m_Name: Exit
@@ -1469,7 +1470,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1222282931}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1222282936}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1222282931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,6 +1591,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
+--- !u!114 &1222282936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222282928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115c7ce88d10e8143b5f3f8241a1bf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1344660251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,7 +2229,7 @@ RectTransform:
   m_GameObject: {fileID: 1746234884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 4}
-  m_LocalScale: {x: 1.3823102, y: 1.3823102, z: 1.3823102}
+  m_LocalScale: {x: 0.966926, y: 0.966926, z: 0.966926}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2067932486}
@@ -2717,7 +2742,7 @@ RectTransform:
   m_GameObject: {fileID: 2049734240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.4685462, y: 2.4685462, z: 2.4685462}
+  m_LocalScale: {x: 1.4866818, y: 1.4866818, z: 1.4866818}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2067932486}
