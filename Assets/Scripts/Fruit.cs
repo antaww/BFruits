@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Fruit : MonoBehaviour
@@ -18,10 +19,7 @@ public class Fruit : MonoBehaviour
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _rb = GetComponent<Rigidbody>();
-        _points = gameObject.CompareTag("Fruit")
-            ? 1
-            : Random.Range(10,
-                20); // Element with the script & tag "Fruit" is a fruit (1 point), else it's a bonus (10-20 points)
+        _points = gameObject.CompareTag("Fruit") ? 1 : 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,17 +33,27 @@ public class Fruit : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         if (!_gameManager.isGameRunning) return;
         if (!Input.GetMouseButton(0)) return; // Security check
-        GetComponent<Collider>().enabled = false;
-        Destroy(gameObject);
-        if (slicedFruit != null)
+        SliceFruit(gameObject, slicedFruit, _rb, fruitJuice, explosionVFX, _gameManager, _points);
+    }
+
+    public static void SliceFruit(GameObject fruit, GameObject slicedFruit, Rigidbody rb, GameObject fruitJuice, GameObject explosionVFX, GameManager gameManager, int points)
+    {
+        fruit.GetComponent<Collider>().enabled = false;
+        Destroy(fruit);
+        if (fruit.CompareTag("Bonus"))
         {
-            InstantiateSlicedFruit();
+            Bonus.ApplyBonusEffect(fruit.name, fruit.transform.position);
         }
 
-        InstantiateFruitJuice();
-        var explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
-        Destroy(explosion, 1f);
-        _gameManager.AddScore(_points, false);
+        if (slicedFruit != null)
+        {
+            InstantiateSlicedFruit(fruit, slicedFruit, rb);
+        }
+
+        InstantiateFruitJuice(fruit, fruitJuice);
+        var explosion = Instantiate(explosionVFX, fruit.transform.position, Quaternion.identity);
+        Destroy(explosion, 2f);
+        gameManager.AddScore(points, false);
     }
 
     private void Update()
@@ -53,9 +61,9 @@ public class Fruit : MonoBehaviour
         transform.Rotate(Vector2.right * (Time.deltaTime * RotationForce));
     }
 
-    private void InstantiateSlicedFruit()
+    private static void InstantiateSlicedFruit(GameObject fruit, GameObject slicedFruit, Rigidbody _rb)
     {
-        var transformVar = transform; // Optimization
+        var transformVar = fruit.transform; // Optimization
         var position = transformVar.position; // Optimization
 
         var instantiatedSlicedFruit = Instantiate(slicedFruit, position, transformVar.rotation);
@@ -64,7 +72,7 @@ public class Fruit : MonoBehaviour
 
         foreach (var srb in slicedRb)
         {
-            srb.AddExplosionForce(Random.Range(20f, 70f), transform.position, 10, 0f, ForceMode.Impulse);
+            srb.AddExplosionForce(Random.Range(20f, 70f), fruit.transform.position, 10, 0f, ForceMode.Impulse);
             srb.velocity = _rb.velocity * 1.2f;
             srb.mass = 8f;
         }
@@ -72,9 +80,9 @@ public class Fruit : MonoBehaviour
         Destroy(instantiatedSlicedFruit, 5);
     }
 
-    private void InstantiateFruitJuice()
+    private static void InstantiateFruitJuice(GameObject fruit, GameObject fruitJuice)
     {
-        var position = transform.position; // Optimization
+        var position = fruit.transform.position; // Optimization
         var instantiatedJuice =
             Instantiate(fruitJuice, new Vector3(position.x, position.y, 0), fruitJuice.transform.rotation);
 

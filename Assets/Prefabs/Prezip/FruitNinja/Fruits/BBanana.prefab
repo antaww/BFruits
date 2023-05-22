@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1083849857817193229}
   - component: {fileID: 6919431241857660720}
   - component: {fileID: 5858391251910999212}
+  - component: {fileID: 7065371169558033618}
   m_Layer: 0
   m_Name: BBanana
   m_TagString: Bonus
@@ -129,10 +130,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92451745958bff342ad54a06ca55432a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingText: {fileID: 5704509409572858159, guid: 53fa97ef752768b46acc5fe231e9fdd8, type: 3}
   fruitJuice: {fileID: 8666788058111210460, guid: 900775f75e8dafe428368f02f0c57c2b, type: 3}
   slicedFruit: {fileID: 0}
   explosionVFX: {fileID: 3330048529440655427}
+--- !u!114 &7065371169558033618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148414508254640294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49eca93944028f4d8b2c34af5e7b21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &461583098434015289
 PrefabInstance:
   m_ObjectHideFlags: 0
