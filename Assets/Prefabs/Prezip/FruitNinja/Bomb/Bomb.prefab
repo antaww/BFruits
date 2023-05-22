@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -8420613389888449531}
   - component: {fileID: 4074432258830247634}
   - component: {fileID: 3352212421976764246}
+  - component: {fileID: 1997895212207683551}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Bomb
@@ -129,3 +130,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 2973213231651848533, guid: 465372aead185214ca51a15bcde24c94, type: 3}
+--- !u!114 &1997895212207683551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4473449225418355192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
