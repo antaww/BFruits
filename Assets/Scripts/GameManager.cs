@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public AudioSource LivesSound;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
+	public GameObject Multiplicator;
 
     public GameObject slashSound;
     public GameObject bombSound;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         isGameRunning = true;
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
+
         UpdateScoreGUI();
         UpdateLivesGUI();
     }
@@ -55,6 +57,9 @@ public class GameManager : MonoBehaviour
                 Pause.PauseGame();
             }
         }
+		Multiplicator.GetComponent<TextMeshProUGUI>().text = "x" + (isTriplePoints ? 3 : isDoublePoints ? 2 : 1);
+		//Set color of multiplicator to white if 1 to green if 2 to yellow if 3
+		Multiplicator.GetComponent<TextMeshProUGUI>().color = isTriplePoints ? new Color32(255, 255, 0, 255) : isDoublePoints ? new Color32(0, 255, 0, 255) : new Color32(255, 255, 255, 255);
     }
 
     public void AddScore(int points, bool isBomb)
